@@ -13,6 +13,8 @@ html {
   --text-dark: #403f3d;
   --text-light: #e1d4c9;
   --text-accent: #b0907a;
+  --border-dark: #665f55;
+  --border-light: #c1b6ad;
 }
 
 /* Page styles start */
@@ -24,13 +26,6 @@ html {
   font-weight: normal;
   color: var(--text-dark);
 }
-
-/* .page-wrapper {
-  max-width: 100%;
-  min-height: 100vh;
-  padding: 20px 40px 40px;
-  background-color: var(--background-body);
-} */
 
 .content-wrapper {
   max-width: 1440px;
@@ -98,10 +93,10 @@ html {
 }
 /* Header styles end */
 
-/* Hero styles start */
+/* Hero section styles start */
 
 .hero {
-  padding-top: 20px;
+  padding-top: 22px;
   background-color: var(--background-body);
   padding-bottom: 100px;
 }
@@ -158,5 +153,135 @@ h1 span {
 
 .button-menu {
   padding: 20px 78px;
+  font-weight: 600;
   line-height: 150%;
 }
+/* Hero section styles end */
+
+/* Favorite-coffee section styles start */
+.favorite-coffee {
+  padding-bottom: 100px;
+  background-color: var(--background-body);
+}
+
+.section-heading {
+  margin: 0 0 40px;
+  font-family: 'Inter';
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+  color: var(--text-dark);
+}
+
+.section-heading span {
+  color: var(--text-accent);
+  font-style: italic;
+}
+
+.favorite-coffee-heading {
+  text-align: center;
+}
+
+.favorite-slider {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.arrow-block {
+  display: flex;
+  flex-basis: 60px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-button {
+  height: 60px;
+  flex-basis: 60px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+}
+
+.slide-window {
+  overflow: hidden;
+  flex-grow: 8;
+  display: flex;
+  justify-content: center;
+}
+
+.slider-card {
+  max-width: 480px;
+  color: var(--text-dark);
+}
+
+.slider-image-container {
+  width: 480px;
+  height: 480px;
+  margin-bottom: 20px;
+}
+
+.slide-1 {
+  background-image: url(../assets/img/coffee-slider-1.png);
+  background-size: contain;
+}
+
+.slide-2 {
+}
+
+.slide-3 {
+}
+
+.drink-name {
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+}
+.drink-description {
+  margin-bottom: 16px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+.drink-price {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.favorite-slider-state {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.slider-state {
+  flex-basis: 40px;
+  flex-grow: 0;
+  height: 4px;
+  border-radius: 100px;
+  background-color: var(--border-light);
+}
+
+.state-active {
+  background-color: var(--border-dark);
+}
+/* Favorite-coffee section styles end */
