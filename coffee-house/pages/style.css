@@ -18,6 +18,10 @@ html {
   --border-light: #c1b6ad;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Page styles start */
 .body {
   font-family: 'Inter', sans-serif;
@@ -26,6 +30,7 @@ html {
   line-height: 1.2;
   font-weight: normal;
   color: var(--text-dark);
+  background-color: var(--background-body);
 }
 
 .content-wrapper {
@@ -443,3 +448,27 @@ h1 span {
 }
 
 /* Mobile section styles end */
+
+/* Contacts section styles start */
+.footer {
+  padding-bottom: 40px;
+  background-color: var(--background-body);
+}
+
+.contacts-container {
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 40px;
+  background-color: var(--background-container);
+}
+
+.offer {
+  flex-basis: 530px;
+  flex-grow: 0;
+}
+
+.footer-heading {
+  color: var(--text-light);
+}
+/* Contacts section styles end */
