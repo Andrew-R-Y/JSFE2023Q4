@@ -285,3 +285,68 @@ h1 span {
   background-color: var(--border-dark);
 }
 /* Favorite-coffee section styles end */
+
+/* About section styles start */
+.about {
+  padding-bottom: 100px;
+  background-color: var(--background-body);
+}
+
+.about-heading {
+  letter-spacing: -0.1px;
+}
+
+.photo-galery {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 100%;
+  height: 1060px;
+  overflow: hidden;
+}
+
+.image-container {
+  overflow: hidden;
+  border-radius: 20px;
+  width: 660px;
+  background-size: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.5s;
+}
+
+.image-container:hover {
+  background-size: 100%;
+}
+
+.container-1 {
+  background-image: url(../assets/img/about-1.jpg);
+  flex-basis: 590px;
+  align-self: flex-start;
+}
+.container-2 {
+  background-image: url(../assets/img/about-2.jpg);
+  flex-basis: 430px;
+  align-self: flex-start;
+}
+
+.container-3 {
+  background-image: url(../assets/img/about-3.jpg);
+  flex-basis: 430px;
+}
+
+.container-4 {
+  background-image: url(../assets/img/about-4.jpg);
+  flex-basis: 590px;
+}
+
+/* About section styles end */
+
+/* Mobile section styles start */
+.mobile {
+  background-color: var(--background-body);
+}
+
+/* Mobile section styles end */
