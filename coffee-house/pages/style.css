@@ -193,6 +193,10 @@ h1 span {
   line-height: 150%;
 }
 
+.button-menu-link {
+  text-decoration: none;
+}
+
 .button-menu-text {
   transition: all 0.5s;
 }
