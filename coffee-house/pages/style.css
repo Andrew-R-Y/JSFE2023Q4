@@ -79,6 +79,7 @@ html {
   text-decoration: none;
   color: var(--text-dark);
   font-weight: 600;
+  line-height: 150%;
   position: relative;
 }
 
@@ -119,7 +120,7 @@ html {
 }
 
 @media (hover: hover) {
-  .header__nav-link:hover::after,
+  .header__nav-item:hover > .header__nav-link::after,
   .menu-button__link:hover::after {
     scale: 1;
   }
@@ -186,9 +187,39 @@ h1 span {
 }
 
 .button-menu {
+  position: relative;
   padding: 20px 78px;
   font-weight: 600;
   line-height: 150%;
+}
+
+.button-menu-text {
+  transition: all 0.5s;
+}
+
+.button-menu::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 60px;
+  background-image: url('../assets/img/svg/coffee-cup.svg');
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+
+@media (hover: hover) {
+  .button-menu:hover {
+    cursor: pointer;
+  }
+
+  .button-menu:hover > .button-menu-text {
+    transform: translateX(-10px);
+  }
+  .button-menu:hover::after {
+    opacity: 1;
+  }
 }
 /* Hero section styles end */
 
@@ -242,6 +273,26 @@ h1 span {
   justify-content: center;
   border: 1px solid var(--border-dark);
   border-radius: 50%;
+  transition: all 0.5s ease-out;
+}
+
+.arrow-image {
+  stroke: var(--border-dark);
+  transition: all 0.5s ease-out;
+}
+
+@media (hover: hover) {
+  .slider-button:hover {
+    background-color: var(--background-container);
+  }
+
+  .slider-button.active:hover {
+    cursor: pointer;
+  }
+
+  .slider-button:hover > .arrow-image {
+    stroke: var(--border-light);
+  }
 }
 
 .slide-window {
