@@ -179,7 +179,7 @@ html {
   padding: 8px 16px 7px 8px;
   border-radius: 100px;
   border: 1px solid var(--border-light);
-  transition: all 0.5s;
+  transition: all 0.5s ease-out;
   overflow: hidden;
   color: var(--text-dark);
   font-family: 'Inter';
@@ -211,7 +211,7 @@ html {
   align-items: center;
   border-radius: 50%;
   background-color: var(--border-light);
-  transition: all 0.5s;
+  transition: all 0.5s ease-out;
 }
 
 .tab.active-tab .tab-icon-container {
