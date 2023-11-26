@@ -145,6 +145,96 @@ html {
 
 /* Header styles end */
 
+/* Offer section styles start */
+.offer {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: var(--background-body);
+}
+
+.main-heading {
+  margin: 0 auto 40px;
+  max-width: 800px;
+  text-align: center;
+  color: var(--text-dark);
+  font-family: 'Inter';
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.main-heading > span {
+  color: var(--text-accent);
+  font-style: italic;
+}
+
+.offer-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tab {
+  padding: 8px 16px 7px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border-light);
+  transition: all 0.5s;
+  overflow: hidden;
+  color: var(--text-dark);
+  font-family: 'Inter';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.tab.active-tab {
+  background-color: var(--background-container);
+  color: var(--text-light);
+}
+
+.tab-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-right: 11px;
+}
+
+.tab-icon-container {
+  height: 30px;
+  flex-basis: 30px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--border-light);
+  transition: all 0.5s;
+}
+
+.tab.active-tab .tab-icon-container {
+  background-color: var(--background-body);
+}
+
+.tab-text {
+  margin: 0;
+}
+
+@media (hover: hover) {
+  .tab:hover {
+    background-color: var(--background-container);
+    color: var(--text-light);
+    cursor: pointer;
+  }
+
+  .tab:hover .tab-icon-container {
+    background-color: var(--background-body);
+  }
+}
+/* Offer section styles end */
+
 /* Footer - Contacts - start */
 .footer {
   padding-bottom: 40px;
