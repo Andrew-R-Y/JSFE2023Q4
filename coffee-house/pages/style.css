@@ -288,9 +288,6 @@ h1 span {
 @media (hover: hover) {
   .slider-button:hover {
     background-color: var(--background-container);
-  }
-
-  .slider-button.active:hover {
     cursor: pointer;
   }
 
@@ -322,12 +319,6 @@ h1 span {
   background-size: contain;
 }
 
-.slide-2 {
-}
-
-.slide-3 {
-}
-
 .drink-name {
   margin-bottom: 16px;
   text-align: center;
@@ -337,6 +328,7 @@ h1 span {
   font-weight: 600;
   line-height: 125%;
 }
+
 .drink-description {
   margin-bottom: 16px;
   text-align: center;
