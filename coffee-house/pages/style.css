@@ -463,6 +463,24 @@ h1 span {
 .state-active {
   background-color: var(--border-dark);
 }
+
+@media (max-width: 767px) {
+  .section-heading {
+    font-size: min(8.42vw, 60px);
+  }
+
+  .slider-image-container {
+    width: min(91.5vw, 480px);
+    height: min(91.5vw, 480px);
+  }
+}
+
+@media (max-width: 740px) {
+  .arrow-block {
+    display: none;
+  }
+}
+
 /* Favorite-coffee section styles end */
 
 /* About section styles start */
