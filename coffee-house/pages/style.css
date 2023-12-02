@@ -137,7 +137,8 @@ html {
 }
 
 .hero-container {
-  padding: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   background-image: url('../assets/img/img-hero.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -158,7 +159,6 @@ h1 {
   margin: 0;
   color: var(--text-light);
   font-family: 'Inter';
-  font-size: 72px;
   font-style: normal;
   font-weight: 600;
   line-height: 105%;
@@ -198,6 +198,7 @@ h1 span {
 }
 
 .button-menu-text {
+  transform: translateX(-14px);
   transition: all 0.5s;
 }
 
@@ -207,22 +208,60 @@ h1 span {
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 60px;
+  right: 64px;
   background-image: url('../assets/img/svg/coffee-cup.svg');
-  opacity: 0;
   transition: all 0.3s ease-in;
 }
 
-@media (hover: hover) {
-  .button-menu:hover {
-    cursor: pointer;
+@media (max-width: 600px) {
+  .hero-container {
+    padding-left: 4.2vw;
+    padding-right: 4.2vw;
   }
 
-  .button-menu:hover > .button-menu-text {
-    transform: translateX(-10px);
+
+  h1 {
+    font-size: min(13vw, 56px);
   }
-  .button-menu:hover::after {
-    opacity: 1;
+}
+
+@media (min-width: 601px) {
+  .hero-container {
+    padding-left: 7.8vw;
+    padding-right: 7.8vw;
+  }
+  
+  h1 {
+    font-size: min(9.4vw, 72px);
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-container {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .button-menu::after {
+    opacity: 0;
+  }
+
+  .button-menu-text {
+    transform: translateX(0);
+  }
+
+  @media (hover: hover) {
+    .button-menu:hover {
+      cursor: pointer;
+    }
+  
+    .button-menu:hover > .button-menu-text {
+      transform: translateX(-10px);
+    }
+
+    .button-menu:hover::after {
+      opacity: 1;
+    }
   }
 }
 /* Hero section styles end */
@@ -692,6 +731,28 @@ h1 span {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+
+
+
+
+@media(max-width: 600px) {
+  .contacts-container {
+    flex-direction: column;
+  }
+}
+
+@media(min-width: 601px) {
+  .contacts-container {
+    flex-direction: column;
+  }
+}
+
+@media(min-width: 992px) {
+  .contacts-container {
+    flex-direction: row;
+  }
 }
 
 /* Contacts section styles end */
