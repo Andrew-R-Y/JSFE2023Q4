@@ -35,8 +35,8 @@ html {
 
 .content-wrapper {
   max-width: 1440px;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: min(40px, 4vw);
+  padding-right: min(40px, 4vw);
   margin: 0 auto;
 }
 /* Page styles end */
@@ -215,20 +215,20 @@ h1 span {
 
 @media (max-width: 600px) {
   .hero-container {
-    padding-left: 4.2vw;
-    padding-right: 4.2vw;
+    padding-left: calc(16px + (100vw - 380px)/(768 - 380) * 44);
+    padding-right: calc(16px + (100vw - 380px)/(768 - 380) * 44);
   }
-
-
+  
+  
   h1 {
-    font-size: min(13vw, 56px);
+    font-size: min(11vw, 50px);
   }
 }
 
 @media (min-width: 601px) {
   .hero-container {
-    padding-left: 7.8vw;
-    padding-right: 7.8vw;
+    padding-left: calc(16px + (100vw - 380px)/(768 - 380) * 44);
+    padding-right: calc(16px + (100vw - 380px)/(768 - 380) * 44);
   }
   
   h1 {
