@@ -39,6 +39,21 @@ html {
   padding-right: min(40px, 4vw);
   margin: 0 auto;
 }
+
+@media(max-width: 600px) {
+  .content-wrapper {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@media(min-width: 601px) {
+  .content-wrapper {
+    padding-left: min(40px, 5.2vw);
+    padding-right: min(40px, 5.2vw);
+  }
+}
+
 /* Page styles end */
 
 /* header styles start */
@@ -119,10 +134,51 @@ html {
   bottom: 1px;
 }
 
+.header__burger-menu {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+  display: none;
+}
+
+.header__burger-menu > span {
+  width: 18px;
+  height: 2px;
+  position: absolute;
+  background-color: var(--border-dark);
+  transition: all 0.5s ease-out;
+}
+
+.header__burger-line-first {
+  top: 37%;
+  left: 12px;
+}
+
+.header__burger-line-second {
+  bottom: 37%;
+  left: 12px;
+}
+
 @media (hover: hover) {
   .header__nav-item:hover > .header__nav-link::after,
   .menu-button__link:hover::after {
     scale: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__nav-list {
+    display: none;
+  }
+  
+  .menu-link-wrapper {
+    display: none;
+  }
+
+  .header__burger-menu {
+    display: block;
   }
 }
 
@@ -215,6 +271,8 @@ h1 span {
 
 @media (max-width: 600px) {
   .hero-container {
+    padding-top: calc(60px + (100vw - 380px)/(768 - 380) * 40);
+    padding-bottom: calc(60px + (100vw - 380px)/(768 - 380) * 40);
     padding-left: calc(16px + (100vw - 380px)/(768 - 380) * 44);
     padding-right: calc(16px + (100vw - 380px)/(768 - 380) * 44);
   }
@@ -222,6 +280,7 @@ h1 span {
   
   h1 {
     font-size: min(11vw, 50px);
+    line-height: 115%;
   }
 }
 
