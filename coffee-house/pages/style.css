@@ -546,7 +546,7 @@ h1 span {
   flex-basis: 590px;
 }
 
-@media (max-width: 1410px) {
+@media (max-width: 1425px) {
   .photo-galery {
     height: 1220px;
     align-items: center;
@@ -597,15 +597,19 @@ h1 span {
 }
 
 .mobile__app-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .mobile__screen-block {
-  height: 630px;
+  height: min(630px, 91vw);
   flex-basis: 630px;
   flex-grow: 0;
   background-image: url('../assets/img/mobile-screens.png');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .mobile-button {
@@ -615,7 +619,6 @@ h1 span {
   padding: 12px 20px 12px;
   border: 1px solid var(--border-dark);
   border-radius: 100px;
-  margin-right: 16px;
   transition: all 0.5s ease-in;
   cursor: pointer;
 }
@@ -662,6 +665,26 @@ h1 span {
 
   .mobile-button:hover .button-text {
     color: var(--text-light);
+  }
+}
+
+@media (max-width: 1360px) {
+  .mobile__container {
+    justify-content: center;
+    gap: 100px;
+  }
+  
+  .mobile__offer-block {
+    flex-grow: 1;
+    max-width: 688px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .mobile__container {
+    justify-content: center;
+    gap: min(10.53vw, 100px);
   }
 }
 
