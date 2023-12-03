@@ -42,8 +42,8 @@ html {
 
 @media(max-width: 600px) {
   .content-wrapper {
-    padding-left: 4vw;
-    padding-right: 4vw;
+    padding-left: 4.21vw;
+    padding-right: 4.21vw;
   }
 }
 
@@ -53,7 +53,6 @@ html {
     padding-right: min(40px, 5.2vw);
   }
 }
-
 /* Page styles end */
 
 /* header styles start */
@@ -181,11 +180,9 @@ html {
     display: block;
   }
 }
-
 /* Header styles end */
 
 /* Hero section styles start */
-
 .hero {
   padding-top: 22px;
   background-color: var(--background-body);
@@ -277,7 +274,6 @@ h1 span {
     padding-left: calc(16px + (100vw - 380px)/(768 - 380) * 44);
     padding-right: calc(16px + (100vw - 380px)/(768 - 380) * 44);
   }
-  
   
   h1 {
     font-size: min(11vw, 50px);
@@ -530,6 +526,7 @@ h1 span {
   flex-basis: 590px;
   align-self: flex-start;
 }
+
 .container-2 {
   background-image: url(../assets/img/about-2.jpg);
   flex-basis: 430px;
@@ -565,7 +562,6 @@ h1 span {
     width: min(688px, 100%);
   }
 }
-
 /* About section styles end */
 
 /* Mobile section styles start */
@@ -680,14 +676,12 @@ h1 span {
   }
 }
 
-
 @media (max-width: 700px) {
   .mobile__container {
     justify-content: center;
-    gap: min(10.53vw, 100px);
+    gap: min(10.8vw, 100px);
   }
 }
-
 /* Mobile section styles end */
 
 /* Contacts section styles start */
@@ -860,10 +854,6 @@ h1 span {
   left: 0;
 }
 
-
-
-
-
 @media(max-width: 600px) {
   .contacts-container {
     flex-direction: column;
@@ -876,10 +866,49 @@ h1 span {
   }
 }
 
+@media (max-width: 991px) {
+  .contacts-container {
+    gap: 100px;
+  }
+  
+  .social-media-block {
+    flex: 0 1 auto;
+  }
+  
+  .contacts-block {
+    flex: 0 1 auto;
+  }
+
+  .contact-us-heading {
+    margin-top: 0;
+  }
+
+  .contact-item.clock {
+    margin-bottom: 4px;
+  }
+}
+
 @media(min-width: 992px) {
   .contacts-container {
     flex-direction: row;
   }
+
 }
 
+@media(max-width: 1300px) {
+  .contacts-container {
+    padding-left: min(7.81vw, 100px);
+    padding-right: min(7.81vw, 100px);
+  }
+}
+
+@media(max-width: 640px) {
+  .contacts-container {
+    padding-top: min(100px, 15.8vw);
+    padding-bottom: min(100px, 15.8vw);
+    padding-left: 4.21vw;
+    padding-right: 4.21vw;
+    gap: min(60px, 10.6vw);
+  }
+}
 /* Contacts section styles end */
