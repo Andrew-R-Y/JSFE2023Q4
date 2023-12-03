@@ -508,14 +508,20 @@ h1 span {
   overflow: hidden;
   border-radius: 20px;
   width: 660px;
-  background-size: 110%;
+  background-size: 728px;
   background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s;
 }
 
-.image-container:hover {
-  background-size: 100%;
+@media (hover: hover) {
+  .image-container {
+    background-size: 821px;
+  }
+
+  .image-container:hover {
+    background-size: 728px;
+  }
 }
 
 .container-1 {
@@ -537,6 +543,26 @@ h1 span {
 .container-4 {
   background-image: url(../assets/img/about-4.jpg);
   flex-basis: 590px;
+}
+
+@media (max-width: 1410px) {
+  .photo-galery {
+    height: 1220px;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .container-2, .container-3 {
+    display: none;
+  }
+
+  .container-1 {
+    align-self: auto;
+  }
+  
+  .image-container {
+    width: min(688px, 100%);
+  }
 }
 
 /* About section styles end */
