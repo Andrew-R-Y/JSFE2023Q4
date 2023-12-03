@@ -267,6 +267,7 @@ h1 span {
   right: 64px;
   background-image: url('../assets/img/svg/coffee-cup.svg');
   transition: all 0.3s ease-in;
+  opacity: 1;
 }
 
 @media (max-width: 600px) {
@@ -281,6 +282,28 @@ h1 span {
   h1 {
     font-size: min(11vw, 50px);
     line-height: 115%;
+  }
+}
+
+@media (hover:hover) {
+  .button-menu-text {
+    transform: translateX(0);
+  }
+
+  .button-menu::after {
+    opacity: 0;
+  }
+
+  .button-menu:hover::after {
+    opacity: 1;
+  }
+
+  .button-menu:hover > .button-menu-text {
+    transform: translateX(-10px);
+  }
+
+  .button-menu:hover {
+    cursor: pointer;
   }
 }
 
@@ -299,28 +322,6 @@ h1 span {
   .hero-container {
     padding-left: 100px;
     padding-right: 100px;
-  }
-
-  .button-menu::after {
-    opacity: 0;
-  }
-
-  .button-menu-text {
-    transform: translateX(0);
-  }
-
-  @media (hover: hover) {
-    .button-menu:hover {
-      cursor: pointer;
-    }
-  
-    .button-menu:hover > .button-menu-text {
-      transform: translateX(-10px);
-    }
-
-    .button-menu:hover::after {
-      opacity: 1;
-    }
   }
 }
 /* Hero section styles end */
