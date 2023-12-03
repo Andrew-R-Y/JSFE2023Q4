@@ -267,6 +267,7 @@ h1 span {
   right: 64px;
   background-image: url('../assets/img/svg/coffee-cup.svg');
   transition: all 0.3s ease-in;
+  opacity: 1;
 }
 
 @media (max-width: 600px) {
@@ -281,6 +282,28 @@ h1 span {
   h1 {
     font-size: min(11vw, 50px);
     line-height: 115%;
+  }
+}
+
+@media (hover:hover) {
+  .button-menu-text {
+    transform: translateX(0);
+  }
+
+  .button-menu::after {
+    opacity: 0;
+  }
+
+  .button-menu:hover::after {
+    opacity: 1;
+  }
+
+  .button-menu:hover > .button-menu-text {
+    transform: translateX(-10px);
+  }
+
+  .button-menu:hover {
+    cursor: pointer;
   }
 }
 
@@ -299,28 +322,6 @@ h1 span {
   .hero-container {
     padding-left: 100px;
     padding-right: 100px;
-  }
-
-  .button-menu::after {
-    opacity: 0;
-  }
-
-  .button-menu-text {
-    transform: translateX(0);
-  }
-
-  @media (hover: hover) {
-    .button-menu:hover {
-      cursor: pointer;
-    }
-  
-    .button-menu:hover > .button-menu-text {
-      transform: translateX(-10px);
-    }
-
-    .button-menu:hover::after {
-      opacity: 1;
-    }
   }
 }
 /* Hero section styles end */
@@ -463,6 +464,24 @@ h1 span {
 .state-active {
   background-color: var(--border-dark);
 }
+
+@media (max-width: 767px) {
+  .section-heading {
+    font-size: min(8.42vw, 60px);
+  }
+
+  .slider-image-container {
+    width: min(91.5vw, 480px);
+    height: min(91.5vw, 480px);
+  }
+}
+
+@media (max-width: 740px) {
+  .arrow-block {
+    display: none;
+  }
+}
+
 /* Favorite-coffee section styles end */
 
 /* About section styles start */
@@ -490,14 +509,20 @@ h1 span {
   overflow: hidden;
   border-radius: 20px;
   width: 660px;
-  background-size: 110%;
+  background-size: 728px;
   background-position: center;
   background-repeat: no-repeat;
   transition: all 0.5s;
 }
 
-.image-container:hover {
-  background-size: 100%;
+@media (hover: hover) {
+  .image-container {
+    background-size: 821px;
+  }
+
+  .image-container:hover {
+    background-size: 728px;
+  }
 }
 
 .container-1 {
@@ -519,6 +544,26 @@ h1 span {
 .container-4 {
   background-image: url(../assets/img/about-4.jpg);
   flex-basis: 590px;
+}
+
+@media (max-width: 1410px) {
+  .photo-galery {
+    height: 1220px;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .container-2, .container-3 {
+    display: none;
+  }
+
+  .container-1 {
+    align-self: auto;
+  }
+  
+  .image-container {
+    width: min(688px, 100%);
+  }
 }
 
 /* About section styles end */
