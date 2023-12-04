@@ -55,15 +55,14 @@ html {
   font-style: italic;
 }
 
-
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .content-wrapper {
     padding-left: 4.21vw;
     padding-right: 4.21vw;
   }
 }
 
-@media(min-width: 601px) {
+@media (min-width: 601px) {
   .content-wrapper {
     padding-left: min(40px, 5.2vw);
     padding-right: min(40px, 5.2vw);
@@ -159,7 +158,6 @@ html {
   bottom: 1px;
 }
 
-
 .header__burger-menu {
   position: relative;
   width: 44px;
@@ -197,7 +195,7 @@ html {
   .header__nav-list {
     display: none;
   }
-  
+
   .menu-link-wrapper {
     display: none;
   }
@@ -211,6 +209,7 @@ html {
 /* Offer section styles start */
 .offer {
   padding-top: 20px;
+  padding-bottom: 100px;
   background-color: var(--background-body);
 }
 
@@ -249,6 +248,18 @@ html {
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+}
+
+#coffee {
+  min-width: 116px;
+}
+
+#tea {
+  min-width: 90px;
+}
+
+#dessert {
+  min-width: 124px;
 }
 
 .tab.active-tab {
@@ -298,19 +309,16 @@ html {
 
 .cards-container {
   padding-top: 40px;
-  padding-bottom: 100px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
-  align-items: start;
-  gap: 40px 40px;
+  justify-items: center;
+  grid-row-gap: 40px;
+  grid-column-gap: min(40px, calc(40px - (1440px - 100vw) / 3));
 }
 
 .card-item {
-  flex-basis: 310px;
-  max-width: 310px;
-  flex-shrink: 0;
-  flex-grow: 1;
+  width: 310px;
   border-radius: 40px;
   border: 1px solid var(--border-light);
 }
@@ -366,10 +374,25 @@ html {
   line-height: 125%;
 }
 
-@media (any-hover: hover) {
-.image-item {
-  scale: 1.1;
+.refresh-block {
+  display: none;
 }
+
+.refresh-button {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+}
+
+@media (any-hover: hover) {
+  .image-item {
+    scale: 1.1;
+  }
 
   .card-item:hover .image-item {
     scale: 1;
@@ -383,6 +406,54 @@ html {
 @media (max-width: 767px) {
   .main-heading {
     font-size: min(8.42vw, 60px);
+  }
+}
+
+@media (max-width: 1330px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: normal;
+  }
+}
+
+@media (max-width: 1040px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards-container {
+    margin-bottom: 40px;
+  }
+
+  .refresh-block {
+    display: block;
+  }
+
+  .item-5,
+  .item-6,
+  .item-7,
+  .item-8 {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .cards-container {
+    justify-content: space-evenly;
+    grid-column-gap: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .offer-tabs {
+    justify-content: space-between;
+    gap: 0;
   }
 }
 /* Offer section styles end */
@@ -558,13 +629,13 @@ html {
   left: 0;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .contacts-container {
     flex-direction: column;
   }
 }
 
-@media(min-width: 601px) {
+@media (min-width: 601px) {
   .contacts-container {
     flex-direction: column;
   }
@@ -574,11 +645,11 @@ html {
   .contacts-container {
     gap: 100px;
   }
-  
+
   .social-media-block {
     flex: 0 1 auto;
   }
-  
+
   .contacts-block {
     flex: 0 1 auto;
   }
@@ -592,21 +663,20 @@ html {
   }
 }
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
   .contacts-container {
     flex-direction: row;
   }
-
 }
 
-@media(max-width: 1300px) {
+@media (max-width: 1300px) {
   .contacts-container {
     padding-left: min(7.81vw, 100px);
     padding-right: min(7.81vw, 100px);
   }
 }
 
-@media(max-width: 640px) {
+@media (max-width: 640px) {
   .contacts-container {
     padding-top: min(100px, 15.8vw);
     padding-bottom: min(100px, 15.8vw);
