@@ -387,6 +387,12 @@ html {
   justify-content: center;
   border: 1px solid var(--border-dark);
   border-radius: 50%;
+  transition: all 0.5s ease-out;
+}
+
+.refresh-icon {
+  stroke: var(--border-dark);
+  transition: all 0.5s ease-out;
 }
 
 @media (any-hover: hover) {
@@ -400,6 +406,15 @@ html {
 
   .card-item:hover {
     cursor: pointer;
+  }
+
+  .refresh-button:hover {
+    background-color: var(--background-container);
+    cursor: pointer;
+  }
+
+  .refresh-button:hover > .refresh-icon {
+    stroke: var(--border-light);
   }
 }
 
