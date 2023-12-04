@@ -544,7 +544,14 @@ h1 span {
   flex-basis: 590px;
 }
 
-@media (max-width: 1425px) {
+@media (max-width: 1430px) {
+  .image-container {
+    width: calc((100vw - 120px) / 2);
+  }
+}
+
+
+@media (max-width: 960px) {
   .photo-galery {
     height: 1220px;
     align-items: center;
