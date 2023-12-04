@@ -181,6 +181,12 @@ html {
     display: block;
   }
 }
+
+@media(any-hover: hover) {
+  .header__burger-menu:hover {
+    cursor: pointer;
+  }
+}
 /* Header styles end */
 
 /* Hero section styles start */
