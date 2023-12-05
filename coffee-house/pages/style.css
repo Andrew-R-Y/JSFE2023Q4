@@ -526,6 +526,17 @@ h1 span {
   .image-container:hover {
     background-size: 728px;
   }
+
+  @media(min-width: 1000px) {
+    .image-container {
+      background-size: 728px;
+    }
+  
+    .image-container:hover {
+      background-size: 662px;
+    }
+  }
+
 }
 
 .container-1 {
