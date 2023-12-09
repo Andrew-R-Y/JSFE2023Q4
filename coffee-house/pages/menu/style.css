@@ -33,6 +33,11 @@ html {
   background-color: var(--background-body);
 }
 
+.body__wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .content-wrapper {
   max-width: 1440px;
   padding-left: 40px;
@@ -108,8 +113,13 @@ html {
   list-style-type: none;
 }
 
+.header__nav-item:last-child {
+  display: none;
+}
+
 .header__nav-link,
-.menu-button {
+.menu-button,
+.menu-button-burger {
   font-family: 'Inter';
   text-decoration: none;
   color: var(--text-dark);
@@ -154,6 +164,7 @@ html {
 .header__nav-link::after {
   bottom: -6px;
 }
+
 .menu-button::after {
   bottom: 1px;
 }
@@ -185,6 +196,30 @@ html {
   left: 12px;
 }
 
+.header__burger-line-middle,
+.header__burger-line-middle-2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.1s rotate 0.5s;
+}
+
+.open .header__burger-line-middle {
+  opacity: 100%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.open .header__burger-line-middle-2 {
+  opacity: 100%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.open .header__burger-line-first,
+.open .header__burger-line-second {
+  opacity: 0;
+}
+
 @media (any-hover: hover) {
   .header__nav-item:hover > .header__nav-link::after {
     scale: 1;
@@ -193,7 +228,47 @@ html {
 
 @media (max-width: 768px) {
   .header__nav-list {
-    display: none;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 60px;
+    padding: 60px 40px;
+    font-size: 32px;
+    line-height: 125%;
+    background-color: var(--background-body);
+    transform: translateX(100%);
+    transition: transform 0.5s;
+  }
+
+  .header__nav-list.open-nav {
+    transform: translateX(0);
+  }
+
+  .header__nav-item {
+    height: 40px;
+  }
+
+  .header__nav-item:last-child {
+    display: block;
+    margin-top: 40px;
+    padding-left: 28px;
+  }
+
+  .link-burger {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .coffee-cup-burger {
+    width: 40px;
+    height: 40px;
   }
 
   .menu-link-wrapper {
@@ -205,10 +280,10 @@ html {
   }
 }
 
-@media(any-hover: hover) {
-    .header__burger-menu:hover {
-      cursor: pointer;
-    }
+@media (any-hover: hover) {
+  .header__burger-menu:hover {
+    cursor: pointer;
+  }
 }
 /* Header styles end */
 

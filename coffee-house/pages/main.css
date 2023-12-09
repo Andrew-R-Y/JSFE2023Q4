@@ -35,6 +35,7 @@ html {
 
 .body__wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .content-wrapper {
