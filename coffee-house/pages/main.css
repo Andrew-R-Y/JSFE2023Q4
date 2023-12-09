@@ -170,6 +170,30 @@ html {
   left: 12px;
 }
 
+.header__burger-line-middle,
+.header__burger-line-middle-2 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.1s rotate 0.5s;
+}
+
+.open .header__burger-line-middle {
+  opacity: 100%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.open .header__burger-line-middle-2 {
+  opacity: 100%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.open .header__burger-line-first,
+.open .header__burger-line-second {
+  opacity: 0;
+}
+
 @media (any-hover: hover) {
   .header__nav-item:hover > .header__nav-link::after,
   .menu-button__link:hover::after {
