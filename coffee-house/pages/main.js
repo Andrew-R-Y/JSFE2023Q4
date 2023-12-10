@@ -67,6 +67,9 @@ let touchX;
 let touchY;
 let endX;
 let endY;
+let touchDownTime = 0;
+let touchUpTime = 0;
+let touchTime = 0;
 
 function slideMouseDown(event) {
   touchX = event.pageX;
@@ -101,18 +104,26 @@ function slideTouchDown(event) {
   object = event.changedTouches[0];
   touchX = object.pageX;
   touchY = object.pageY;
+  touchDownTime = new Date().getTime();
 }
 
 function slideTouchUp(event) {
   object = event.changedTouches[0];
   endX = object.pageX;
   endY = object.pageY;
+  touchUpTime = new Date().getTime();
+  touchTime = touchUpTime - touchDownTime;
+
   lengthX = endX - touchX;
   lengthY = endY - touchY;
-  if (Math.abs(lengthY) > Math.abs(lengthX)) {
+  if (
+    Math.abs(lengthY) > Math.abs(lengthX) ||
+    touchTime > 400 ||
+    Math.abs(lengthY) > 30
+  ) {
     return;
   }
-  if (Math.abs(lengthX) > 40) {
+  if (Math.abs(lengthX) > 20) {
     if (lengthX > 0) {
       previousSlide();
     }
