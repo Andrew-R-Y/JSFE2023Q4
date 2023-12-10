@@ -33,6 +33,7 @@ const SLIDES_LINE = document.querySelector('.slides-line');
 const SLIDE = document.querySelector('.slider-image-container');
 const NEXT_BUTTON = document.querySelector('.button-next');
 const PREV_BUTTON = document.querySelector('.button-prev');
+const SLIDER = document.querySelector('.favorite-slider');
 
 let slideCount = 0;
 let slideWidth;
@@ -40,7 +41,7 @@ let slideWidth;
 function changeSlide() {
   slideWidth = SLIDE.offsetWidth;
   SLIDES_LINE.style.transform = `translate(-${
-    slideCount * (slideWidth + 100)
+    slideCount * (slideWidth + 500)
   }px)`;
 }
 
@@ -60,6 +61,77 @@ function previousSlide() {
   changeSlide();
 }
 
+let lengthX;
+let lengthY;
+let touchX;
+let touchY;
+let endX;
+let endY;
+
+function slideMouseDown(event) {
+  touchX = event.pageX;
+  touchY = event.pageY;
+  if (!event.target.closest('.slider-button')) {
+    event.preventDefault();
+  }
+}
+
+function slideMouseUp(event) {
+  endX = event.pageX;
+  endY = event.pageY;
+  lengthX = endX - touchX;
+  lengthY = endY - touchY;
+  if (Math.abs(lengthY) > Math.abs(lengthX)) {
+    return;
+  }
+  if (Math.abs(lengthX) > 100) {
+    if (lengthX > 0) {
+      previousSlide();
+    }
+    if (lengthX < 0) {
+      nextSlide();
+    }
+  }
+  if (!event.target.closest('.slider-button')) {
+    event.preventDefault();
+  }
+}
+
+function slideTouchDown(event) {
+  object = event.changedTouches[0];
+  touchX = object.pageX;
+  touchY = object.pageY;
+  if (!event.target.closest('.slider-button')) {
+    event.preventDefault();
+  }
+}
+
+function slideTouchUp(event) {
+  object = event.changedTouches[0];
+  endX = object.pageX;
+  endY = object.pageY;
+  lengthX = endX - touchX;
+  lengthY = endY - touchY;
+  if (Math.abs(lengthY) > Math.abs(lengthX)) {
+    return;
+  }
+  if (Math.abs(lengthX) > 100) {
+    if (lengthX > 0) {
+      previousSlide();
+    }
+    if (lengthX < 0) {
+      nextSlide();
+    }
+  }
+  if (!event.target.closest('.slider-button')) {
+    event.preventDefault();
+  }
+}
+
 NEXT_BUTTON.addEventListener('click', nextSlide);
 PREV_BUTTON.addEventListener('click', previousSlide);
+SLIDER.addEventListener('mousedown', slideMouseDown);
+SLIDER.addEventListener('mouseup', slideMouseUp);
+SLIDER.addEventListener('touchstart', slideTouchDown);
+SLIDER.addEventListener('touchend', slideTouchUp);
 // slider end

@@ -481,8 +481,8 @@ h1 span {
 
 .slides-line {
   display: flex;
-  gap: 100px;
-  transition: transform 0.5s;
+  gap: 500px;
+  transition: transform 0.7s;
 }
 
 .slider-card {
