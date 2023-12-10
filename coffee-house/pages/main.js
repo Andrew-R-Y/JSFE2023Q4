@@ -16,7 +16,6 @@ function openBurger(event) {
     BURGER_BUTTON.classList.remove('open');
   }
 }
-// burger menu end
 
 function escapeFunction(event) {
   if (event.code === 'Escape') {
@@ -27,3 +26,40 @@ function escapeFunction(event) {
 
 document.addEventListener('click', openBurger);
 document.addEventListener('keyup', escapeFunction);
+// burger menu end
+
+// slider start
+const SLIDES_LINE = document.querySelector('.slides-line');
+const SLIDE = document.querySelector('.slider-image-container');
+const NEXT_BUTTON = document.querySelector('.button-next');
+const PREV_BUTTON = document.querySelector('.button-prev');
+
+let slideCount = 0;
+let slideWidth;
+
+function changeSlide() {
+  slideWidth = SLIDE.offsetWidth;
+  SLIDES_LINE.style.transform = `translate(-${
+    slideCount * (slideWidth + 100)
+  }px)`;
+}
+
+function nextSlide() {
+  slideCount += 1;
+  if (slideCount > 2) {
+    slideCount = 0;
+  }
+  changeSlide();
+}
+
+function previousSlide() {
+  slideCount -= 1;
+  if (slideCount < 0) {
+    slideCount = 2;
+  }
+  changeSlide();
+}
+
+NEXT_BUTTON.addEventListener('click', nextSlide);
+PREV_BUTTON.addEventListener('click', previousSlide);
+// slider end
