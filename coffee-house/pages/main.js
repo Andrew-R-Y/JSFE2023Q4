@@ -101,9 +101,6 @@ function slideTouchDown(event) {
   object = event.changedTouches[0];
   touchX = object.pageX;
   touchY = object.pageY;
-  if (!event.target.closest('.slider-button')) {
-    event.preventDefault();
-  }
 }
 
 function slideTouchUp(event) {
@@ -115,7 +112,7 @@ function slideTouchUp(event) {
   if (Math.abs(lengthY) > Math.abs(lengthX)) {
     return;
   }
-  if (Math.abs(lengthX) > 100) {
+  if (Math.abs(lengthX) > 40) {
     if (lengthX > 0) {
       previousSlide();
     }
@@ -123,15 +120,12 @@ function slideTouchUp(event) {
       nextSlide();
     }
   }
-  if (!event.target.closest('.slider-button')) {
-    event.preventDefault();
-  }
 }
 
 NEXT_BUTTON.addEventListener('click', nextSlide);
 PREV_BUTTON.addEventListener('click', previousSlide);
 SLIDER.addEventListener('mousedown', slideMouseDown);
 SLIDER.addEventListener('mouseup', slideMouseUp);
-SLIDER.addEventListener('touchstart', slideTouchDown);
-SLIDER.addEventListener('touchend', slideTouchUp);
+SLIDES_LINE.addEventListener('touchstart', slideTouchDown);
+SLIDES_LINE.addEventListener('touchend', slideTouchUp);
 // slider end
