@@ -31,713 +31,724 @@ document.addEventListener('keyup', escapeFunction);
 // work with product items start
 const CARDS_CONTAINER = document.querySelector('.cards-container');
 const CATEGORY_BUTTONS = document.querySelectorAll('.tab');
-const COFFEE_BUTTON =   document.getElementById('coffee');
+const COFFEE_BUTTON = document.getElementById('coffee');
 const TEA_BUTTON = document.getElementById('tea');
 const DESSERT_BUTTON = document.getElementById('dessert');
 
 const products = [
   {
-    "name": "Irish coffee",
-    "description": "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
-    "price": "7.00",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Irish coffee',
+    description:
+      'Fragrant black coffee with Jameson Irish whiskey and whipped milk',
+    price: '7.00',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Kahlua coffee",
-    "description": "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
-    "price": "7.00",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Kahlua coffee',
+    description:
+      'Classic coffee with milk and Kahlua liqueur under a cap of frothed milk',
+    price: '7.00',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Honey raf",
-    "description": "Espresso with frothed milk, cream and aromatic honey",
-    "price": "5.50",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Honey raf',
+    description: 'Espresso with frothed milk, cream and aromatic honey',
+    price: '5.50',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Ice cappuccino",
-    "description": "Cappuccino with soft thick foam in summer version with ice",
-    "price": "5.00",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Ice cappuccino',
+    description: 'Cappuccino with soft thick foam in summer version with ice',
+    price: '5.00',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Espresso",
-    "description": "Classic black coffee",
-    "price": "4.50",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Espresso',
+    description: 'Classic black coffee',
+    price: '4.50',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Latte",
-    "description": "Espresso coffee with the addition of steamed milk and dense milk foam",
-    "price": "5.50",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Latte',
+    description:
+      'Espresso coffee with the addition of steamed milk and dense milk foam',
+    price: '5.50',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Latte macchiato",
-    "description": "Espresso with frothed milk and chocolate",
-    "price": "5.50",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Latte macchiato',
+    description: 'Espresso with frothed milk and chocolate',
+    price: '5.50',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Coffee with cognac",
-    "description": "Fragrant black coffee with cognac and whipped cream",
-    "price": "6.50",
-    "category": "coffee",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Coffee with cognac',
+    description: 'Fragrant black coffee with cognac and whipped cream',
+    price: '6.50',
+    category: 'coffee',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Cinnamon",
-        "add-price": "0.50"
+        name: 'Cinnamon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Moroccan",
-    "description": "Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint",
-    "price": "4.50",
-    "category": "tea",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Moroccan',
+    description:
+      'Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint',
+    price: '4.50',
+    category: 'tea',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Lemon",
-        "add-price": "0.50"
+        name: 'Lemon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Ginger",
-    "description": "Original black tea with fresh ginger, lemon and honey",
-    "price": "5.00",
-    "category": "tea",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Ginger',
+    description: 'Original black tea with fresh ginger, lemon and honey',
+    price: '5.00',
+    category: 'tea',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Lemon",
-        "add-price": "0.50"
+        name: 'Lemon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Cranberry",
-    "description": "Invigorating black tea with cranberry and honey",
-    "price": "5.00",
-    "category": "tea",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Cranberry',
+    description: 'Invigorating black tea with cranberry and honey',
+    price: '5.00',
+    category: 'tea',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Lemon",
-        "add-price": "0.50"
+        name: 'Lemon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Sea buckthorn",
-    "description": "Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon",
-    "price": "5.50",
-    "category": "tea",
-    "sizes": {
-      "s": {
-        "size": "200 ml",
-        "add-price": "0.00"
+    name: 'Sea buckthorn',
+    description:
+      'Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon',
+    price: '5.50',
+    category: 'tea',
+    sizes: {
+      s: {
+        size: '200 ml',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "300 ml",
-        "add-price": "0.50"
+      m: {
+        size: '300 ml',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "400 ml",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '400 ml',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Sugar",
-        "add-price": "0.50"
+        name: 'Sugar',
+        'add-price': '0.50',
       },
       {
-        "name": "Lemon",
-        "add-price": "0.50"
+        name: 'Lemon',
+        'add-price': '0.50',
       },
       {
-        "name": "Syrup",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Syrup',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Marble cheesecake",
-    "description": "Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
-    "price": "3.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Marble cheesecake',
+    description:
+      'Philadelphia cheese with lemon zest on a light sponge cake and red currant jam',
+    price: '3.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Red velvet",
-    "description": "Layer cake with cream cheese frosting",
-    "price": "4.00",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Red velvet',
+    description: 'Layer cake with cream cheese frosting',
+    price: '4.00',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Cheesecakes",
-    "description": "Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar",
-    "price": "4.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Cheesecakes',
+    description:
+      'Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar',
+    price: '4.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Creme brulee",
-    "description": "Delicate creamy dessert in a caramel basket with wild berries",
-    "price": "4.00",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Creme brulee',
+    description:
+      'Delicate creamy dessert in a caramel basket with wild berries',
+    price: '4.00',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Pancakes",
-    "description": "Tender pancakes with strawberry jam and fresh strawberries",
-    "price": "4.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Pancakes',
+    description: 'Tender pancakes with strawberry jam and fresh strawberries',
+    price: '4.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Honey cake",
-    "description": "Classic honey cake with delicate custard",
-    "price": "4.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Honey cake',
+    description: 'Classic honey cake with delicate custard',
+    price: '4.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Chocolate cake",
-    "description": "Cake with hot chocolate filling and nuts with dried apricots",
-    "price": "5.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Chocolate cake',
+    description: 'Cake with hot chocolate filling and nuts with dried apricots',
+    price: '5.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
   },
 
   {
-    "name": "Black forest",
-    "description": "A combination of thin sponge cake with cherry jam and light chocolate mousse",
-    "price": "6.50",
-    "category": "dessert",
-    "sizes": {
-      "s": {
-        "size": "50 g",
-        "add-price": "0.00"
+    name: 'Black forest',
+    description:
+      'A combination of thin sponge cake with cherry jam and light chocolate mousse',
+    price: '6.50',
+    category: 'dessert',
+    sizes: {
+      s: {
+        size: '50 g',
+        'add-price': '0.00',
       },
-      "m": {
-        "size": "100 g",
-        "add-price": "0.50"
+      m: {
+        size: '100 g',
+        'add-price': '0.50',
       },
-      "l": {
-        "size": "200 g",
-        "add-price": "1.00"
-      }
+      l: {
+        size: '200 g',
+        'add-price': '1.00',
+      },
     },
-    "additives": [
+    additives: [
       {
-        "name": "Berries",
-        "add-price": "0.50"
+        name: 'Berries',
+        'add-price': '0.50',
       },
       {
-        "name": "Nuts",
-        "add-price": "0.50"
+        name: 'Nuts',
+        'add-price': '0.50',
       },
       {
-        "name": "Jam",
-        "add-price": "0.50"
-      }
-    ]
-  }
-]
+        name: 'Jam',
+        'add-price': '0.50',
+      },
+    ],
+  },
+];
 
-let item1 = products[1];
+let currentTab = 'coffee';
+let currentProductsArr;
+const cupOfTea = products[9];
 
 function clearMenu() {
   while (CARDS_CONTAINER.firstChild) {
@@ -747,26 +758,106 @@ function clearMenu() {
 
 function buttonsOff() {
   for (const button of CATEGORY_BUTTONS) {
-    button.classList.remove('active-tab')
+    button.classList.remove('active-tab');
   }
 }
+
+function initialAddProducts() {
+  currentProductsArr = arrFilteredByType(products, currentTab);
+  currentProductsArr.forEach((item, index) => {
+    prodIndex = index + 1;
+    const prodCard = createMenuItem(item);
+    addItemToMenu(prodCard);
+  });
+}
+
+initialAddProducts();
 
 COFFEE_BUTTON.addEventListener('click', () => {
   buttonsOff();
   COFFEE_BUTTON.classList.add('active-tab');
+  currentTab = 'coffee';
   clearMenu();
+  currentProductsArr = arrFilteredByType(products, currentTab);
+  currentProductsArr.forEach((item, index) => {
+    prodIndex = index + 1;
+    const prodCard = createMenuItem(item);
+    addItemToMenu(prodCard);
+  });
 });
 
 TEA_BUTTON.addEventListener('click', () => {
   buttonsOff();
   TEA_BUTTON.classList.add('active-tab');
+  currentTab = 'tea';
   clearMenu();
+  currentProductsArr = arrFilteredByType(products, currentTab);
+  currentProductsArr.forEach((item, index) => {
+    prodIndex = index + 1;
+    const prodCard = createMenuItem(item);
+    addItemToMenu(prodCard);
+  });
 });
 
 DESSERT_BUTTON.addEventListener('click', () => {
   buttonsOff();
   DESSERT_BUTTON.classList.add('active-tab');
+  currentTab = 'dessert';
   clearMenu();
+  currentProductsArr = arrFilteredByType(products, currentTab);
+  currentProductsArr.forEach((item, index) => {
+    prodIndex = index + 1;
+    const prodCard = createMenuItem(item);
+    addItemToMenu(prodCard);
+  });
 });
 
+function arrFilteredByType(arr, type) {
+  return arr.filter((item) => item.category === type);
+}
+
+const dessertsArr = arrFilteredByType(products, 'dessert');
+
+function createMenuItem(itemObj) {
+  const menuItem = document.createElement('div');
+  menuItem.classList.add('card-item');
+  const imageContainer = document.createElement('div');
+  imageContainer.classList.add('image-container');
+  const image = document.createElement('img');
+  image.classList.add('image-item');
+  image.setAttribute(
+    'src',
+    `../../assets/menu-img/${itemObj.category}-${prodIndex}.jpg`
+  );
+  image.setAttribute('alt', `${itemObj.name}`);
+  imageContainer.prepend(image);
+  menuItem.prepend(imageContainer);
+  const descriptionBlock = document.createElement('div');
+  descriptionBlock.classList.add('description-block');
+  const itemName = document.createElement('div');
+  itemName.classList.add('item-name');
+  itemName.textContent = itemObj.name;
+  const itemDescription = document.createElement('div');
+  itemDescription.classList.add('item-description');
+  itemDescription.textContent = itemObj.description;
+  const itemPrice = document.createElement('div');
+  itemPrice.classList.add('item-price');
+  itemPrice.textContent = `$${itemObj.price}`;
+  descriptionBlock.append(itemName);
+  descriptionBlock.append(itemDescription);
+  descriptionBlock.append(itemPrice);
+  menuItem.append(descriptionBlock);
+  return menuItem;
+}
+
+function addItemToMenu(item) {
+  CARDS_CONTAINER.append(item);
+}
+
 // work with product items end
+function addBookToMyProfile(book) {
+  const newBook = document.createElement('li');
+  newBook.textContent = book;
+  newBook.classList.add('popup-my-profile__book-item');
+  RENTED_BOOKS.append(newBook);
+}
