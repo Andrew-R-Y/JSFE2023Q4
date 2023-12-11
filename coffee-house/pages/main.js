@@ -174,8 +174,6 @@ SLIDER.addEventListener('mousedown', slideMouseDown);
 SLIDER.addEventListener('mouseup', slideMouseUp);
 SLIDER.addEventListener('touchstart', slideTouchDown);
 SLIDER.addEventListener('touchend', slideTouchUp);
-// document.addEventListener('mousedown', pauseAnimation);
-// document.addEventListener('mouseup', resumeAnimation);
 document.addEventListener('touchstart', pauseAnimation);
 document.addEventListener('touchend', resumeAnimation);
 // slider end
