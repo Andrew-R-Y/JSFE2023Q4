@@ -34,6 +34,7 @@ const SLIDE = document.querySelector('.slider-image-container');
 const NEXT_BUTTON = document.querySelector('.button-next');
 const PREV_BUTTON = document.querySelector('.button-prev');
 const SLIDER = document.querySelector('.favorite-slider');
+const SLIDER_STATE_INDICATORS = document.querySelectorAll('.slider-state');
 
 let slideCount = 0;
 let slideWidth;
@@ -46,19 +47,23 @@ function changeSlide() {
 }
 
 function nextSlide() {
+  removeAnimation(slideCount);
   slideCount += 1;
   if (slideCount > 2) {
     slideCount = 0;
   }
   changeSlide();
+  addAnimation(slideCount);
 }
 
 function previousSlide() {
+  removeAnimation(slideCount);
   slideCount -= 1;
   if (slideCount < 0) {
     slideCount = 2;
   }
   changeSlide();
+  addAnimation(slideCount);
 }
 
 let lengthX;
@@ -133,10 +138,44 @@ function slideTouchUp(event) {
   }
 }
 
+function addAnimation(slideNumber) {
+  SLIDER_STATE_INDICATORS[slideNumber].classList.add('state-active');
+}
+
+function removeAnimation(slideNumber) {
+  SLIDER_STATE_INDICATORS[slideNumber].classList.remove('state-active');
+}
+
+function switchAnimation() {
+  removeAnimation(slideCount);
+  nextSlide();
+  addAnimation(slideCount);
+}
+
+function pauseAnimation(event) {
+  if (event.targetTouches[0].target.closest('.slider-card')) {
+    SLIDER_STATE_INDICATORS[slideCount].classList.add('state-paused');
+  }
+}
+
+function resumeAnimation(event) {
+  for (const slide of SLIDER_STATE_INDICATORS) {
+    slide.classList.remove('state-paused');
+  }
+}
+
+SLIDER_STATE_INDICATORS[0].addEventListener('animationend', switchAnimation);
+SLIDER_STATE_INDICATORS[1].addEventListener('animationend', switchAnimation);
+SLIDER_STATE_INDICATORS[2].addEventListener('animationend', switchAnimation);
+
 NEXT_BUTTON.addEventListener('click', nextSlide);
 PREV_BUTTON.addEventListener('click', previousSlide);
 SLIDER.addEventListener('mousedown', slideMouseDown);
 SLIDER.addEventListener('mouseup', slideMouseUp);
-SLIDES_LINE.addEventListener('touchstart', slideTouchDown);
-SLIDES_LINE.addEventListener('touchend', slideTouchUp);
+SLIDER.addEventListener('touchstart', slideTouchDown);
+SLIDER.addEventListener('touchend', slideTouchUp);
+// document.addEventListener('mousedown', pauseAnimation);
+// document.addEventListener('mouseup', resumeAnimation);
+document.addEventListener('touchstart', pauseAnimation);
+document.addEventListener('touchend', resumeAnimation);
 // slider end

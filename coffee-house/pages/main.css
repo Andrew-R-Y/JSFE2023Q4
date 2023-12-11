@@ -530,6 +530,7 @@ h1 span {
   font-weight: 400;
   line-height: 150%;
 }
+
 .drink-price {
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -551,11 +552,41 @@ h1 span {
   flex-grow: 0;
   height: 4px;
   border-radius: 100px;
-  background-color: var(--border-light);
+  background: linear-gradient(
+    to right,
+    var(--border-dark) 50%,
+    var(--border-light) 50%
+  );
+  background-size: 200% 100%;
+  background-position: bottom right;
+  animation-name: none;
+  animation-timing-function: linear;
+  animation-delay: 0.6s;
+  animation-duration: 2s;
+  animation-fill-mode: none;
+}
+
+@keyframes change-background {
+  0% {
+    background-position: bottom right;
+  }
+  100% {
+    background-position: bottom left;
+  }
 }
 
 .state-active {
-  background-color: var(--border-dark);
+  animation-name: change-background;
+}
+
+.state-paused {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) {
+  .favorite-coffee:has(.slide-window:hover) .slider-state {
+    animation-play-state: paused;
+  }
 }
 
 @media (max-width: 767px) {
