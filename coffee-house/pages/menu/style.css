@@ -459,6 +459,10 @@ html {
   display: none;
 }
 
+.refresh-block.visible {
+  display: block;
+}
+
 .refresh-button {
   width: 60px;
   height: 60px;
@@ -519,10 +523,6 @@ html {
 
   .cards-container {
     margin-bottom: 40px;
-  }
-
-  .refresh-block {
-    display: block;
   }
 
   .item-5,
