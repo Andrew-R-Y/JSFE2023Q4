@@ -21,6 +21,7 @@ function escapeFunction(event) {
   if (event.code === 'Escape') {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
+    popupWindow.classList.remove('open')
   }
 }
 
@@ -912,6 +913,31 @@ window.addEventListener('resize', () => {
 
 REFRESH_BUTTON.addEventListener('click', additionalProductsLoad);
 // work with product items end
+
+// Popup start
+const popupWindow = document.querySelector('.popup');
+
+function openPopup(event) {
+  if (event.target.closest('.card-item')) {
+    popupWindow.classList.add('open');
+    popupWindow.addEventListener('click', function (event) {
+      if (
+        !event.target.closest('.popup__content') ||
+        event.target.closest('.popup__close-button')
+      ) {
+        popupClose();
+      }
+    });
+  }
+}
+
+document.addEventListener('click', openPopup);
+
+function popupClose() {
+  popupWindow.classList.remove('open');
+}
+// Popup end
+
 console.log(`
 score (62/90): 
  [+] 1. Implementation of the burger menu on both pages: (22/22)
