@@ -293,13 +293,17 @@ html {
 .offer {
   padding-top: 100px;
   padding-bottom: 100px;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.offer-wrapper {
+  max-width: 530px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 40px;
-  position: relative;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -405,13 +409,6 @@ h1 span {
 
   h1 {
     font-size: min(9.4vw, 72px);
-  }
-}
-
-@media (min-width: 992px) {
-  .hero-container {
-    padding-left: 100px;
-    padding-right: 100px;
   }
 }
 /* Hero section styles end */
