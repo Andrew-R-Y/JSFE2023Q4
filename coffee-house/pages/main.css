@@ -207,7 +207,7 @@ html {
     position: absolute;
     top: 100px;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     height: 100vh;
     flex-direction: column;
@@ -271,6 +271,7 @@ html {
 }
 
 .hero-container {
+  position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
   background-image: url('../assets/img/img-hero.jpg');
@@ -281,12 +282,24 @@ html {
   border-radius: 40px;
 }
 
+.coffee-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
 .offer {
   max-width: 530px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
