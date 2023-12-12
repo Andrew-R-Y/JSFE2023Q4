@@ -179,14 +179,14 @@ document.addEventListener('touchend', resumeAnimation);
 // slider end
 
 console.log(`
-score (79/90): 
+score (81/90): 
 [+] 1. Implementation of the burger menu on both pages: (22/22)
 [+] 2. Implementation of the carousel on the home page: (24/24)
 [+] 3. Categories of products on the menu page: (16/16)
-[+/-] 4. The Modal on the menu page: (9/20)
+[+/-] 4. The Modal on the menu page: (11/20)
      -[+] The Modal with the description of a specific product opens when clicking on any part of a card of product: +2
      -[+] The part of the page outside the Modal is darkened: +2
-     -[-] When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: (0/2)
+     -[+] When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2
      -[+] Clicking on the area around the Modal and Close button closes it: +2
      -[+/-] The Modal is centered on both axes, sizes of modal elements and their layout match the design: (1/2)
      -[+] After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2

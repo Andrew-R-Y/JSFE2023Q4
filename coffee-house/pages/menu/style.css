@@ -33,6 +33,10 @@ html {
   background-color: var(--background-body);
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .body__wrapper {
   position: relative;
   overflow: hidden;
