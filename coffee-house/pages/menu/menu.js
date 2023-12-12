@@ -21,7 +21,7 @@ function escapeFunction(event) {
   if (event.code === 'Escape') {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
-    popupWindow.classList.remove('open')
+    popupWindow.classList.remove('open');
   }
 }
 
@@ -775,9 +775,11 @@ function initialAddProducts() {
     prodIndex = index + 1;
     if (desktopWindowSize) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
     } else if (index < 4) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
       if (arr.length > 4) {
         REFRESH_BLOCK.classList.add('visible');
@@ -799,6 +801,7 @@ COFFEE_BUTTON.addEventListener('click', () => {
     prodIndex = index + 1;
     if (desktopWindowSize) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
     } else if (index < 4) {
       const prodCard = createMenuItem(item);
@@ -821,9 +824,11 @@ TEA_BUTTON.addEventListener('click', () => {
     prodIndex = index + 1;
     if (desktopWindowSize) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
     } else if (index < 4) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
       if (arr.length > 4) {
         REFRESH_BLOCK.classList.add('visible');
@@ -843,9 +848,11 @@ DESSERT_BUTTON.addEventListener('click', () => {
     prodIndex = index + 1;
     if (desktopWindowSize) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
     } else if (index < 4) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
       if (arr.length > 4) {
         REFRESH_BLOCK.classList.add('visible');
@@ -900,6 +907,7 @@ function additionalProductsLoad() {
     prodIndex = index + 1;
     if (index >= 4) {
       const prodCard = createMenuItem(item);
+      prodCard.addEventListener('click', openPopup);
       addItemToMenu(prodCard);
       REFRESH_BLOCK.classList.remove('visible');
     }
@@ -919,6 +927,26 @@ const popupWindow = document.querySelector('.popup');
 
 function openPopup(event) {
   if (event.target.closest('.card-item')) {
+    const productImageLink = getImageLink(event.currentTarget);
+    const productName = getProductName(event.currentTarget);
+    setPopupName(productName);
+    setPopupImageLink(productImageLink);
+    const productObj = getItem(products, productName);
+    popupWindow.children[0].children[0].children[1].children[1].innerHTML =
+      productObj.description;
+    popupWindow.children[0].children[0].children[1].children[4].children[1].innerHTML = `$${productObj.price}`;
+    popupWindow.children[0].children[0].children[1].children[2].children[1].children[0].children[0].children[1].innerHTML =
+      productObj.sizes.s.size;
+    popupWindow.children[0].children[0].children[1].children[2].children[1].children[1].children[0].children[1].innerHTML =
+      productObj.sizes.m.size;
+    popupWindow.children[0].children[0].children[1].children[2].children[1].children[2].children[0].children[1].innerHTML =
+      productObj.sizes.l.size;
+    popupWindow.children[0].children[0].children[1].children[3].children[1].children[0].children[0].children[1].innerHTML =
+      productObj.additives[0].name;
+    popupWindow.children[0].children[0].children[1].children[3].children[1].children[1].children[0].children[1].innerHTML =
+      productObj.additives[1].name;
+    popupWindow.children[0].children[0].children[1].children[3].children[1].children[2].children[0].children[1].innerHTML =
+      productObj.additives[2].name;
     popupWindow.classList.add('open');
     popupWindow.addEventListener('click', function (event) {
       if (
@@ -931,7 +959,31 @@ function openPopup(event) {
   }
 }
 
-document.addEventListener('click', openPopup);
+function getImageLink(card) {
+  return card.firstElementChild.firstElementChild.getAttribute('src');
+}
+
+function setPopupImageLink(link) {
+  popupWindow.firstElementChild.firstElementChild.firstElementChild.firstElementChild.setAttribute(
+    'src',
+    link
+  );
+}
+
+function getProductName(card) {
+  return card.lastElementChild.firstElementChild.innerHTML;
+}
+
+function setPopupName(name) {
+  popupWindow.firstElementChild.firstElementChild.children[1].firstElementChild.innerHTML =
+    name;
+}
+
+function getItem(array, itemName) {
+  return array.find((item) => {
+    return item.name === itemName;
+  });
+}
 
 function popupClose() {
   popupWindow.classList.remove('open');
@@ -939,11 +991,18 @@ function popupClose() {
 // Popup end
 
 console.log(`
-score (62/90): 
- [+] 1. Implementation of the burger menu on both pages: (22/22)
- [+] 2. Implementation of the carousel on the home page: (24/24)
- [+] 3. Categories of products on the menu page: (16/16)
- [-] 4. The Modal on the menu page: (0/20)
+score (71/90): 
+[+] 1. Implementation of the burger menu on both pages: (22/22)
+[+] 2. Implementation of the carousel on the home page: (24/24)
+[+] 3. Categories of products on the menu page: (16/16)
+[+/-] 4. The Modal on the menu page: (9/20)
+     -[+] The Modal with the description of a specific product opens when clicking on any part of a card of product: +2
+     -[+] The part of the page outside the Modal is darkened: +2
+     -[-] When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: (0/2)
+     -[+] Clicking on the area around the Modal and Close button closes it: +2
+     -[+/-] The Modal is centered on both axes, sizes of modal elements and their layout match the design: (1/2)
+     -[+] After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2
+     -[-] Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4
+     -[-] Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4
  [-] 5. Video on the home page: (0/8)
- Vse chto smog )))
-`)
+`);
