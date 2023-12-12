@@ -37,6 +37,7 @@ const TEA_BUTTON = document.getElementById('tea');
 const DESSERT_BUTTON = document.getElementById('dessert');
 const REFRESH_BLOCK = document.querySelector('.refresh-block');
 const REFRESH_BUTTON = document.querySelector('.refresh-button');
+const BODY = document.querySelector('body');
 
 const products = [
   {
@@ -948,6 +949,7 @@ function openPopup(event) {
     popupWindow.children[0].children[0].children[1].children[3].children[1].children[2].children[0].children[1].innerHTML =
       productObj.additives[2].name;
     popupWindow.classList.add('open');
+    BODY.classList.add('lock');
     popupWindow.addEventListener('click', function (event) {
       if (
         !event.target.closest('.popup__content') ||
@@ -987,6 +989,7 @@ function getItem(array, itemName) {
 
 function popupClose() {
   popupWindow.classList.remove('open');
+  BODY.classList.remove('lock');
 }
 // Popup end
 
