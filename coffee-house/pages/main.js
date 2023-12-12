@@ -179,7 +179,7 @@ document.addEventListener('touchend', resumeAnimation);
 // slider end
 
 console.log(`
-score (71/90): 
+score (79/90): 
 [+] 1. Implementation of the burger menu on both pages: (22/22)
 [+] 2. Implementation of the carousel on the home page: (24/24)
 [+] 3. Categories of products on the menu page: (16/16)
@@ -192,5 +192,5 @@ score (71/90):
      -[+] After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2
      -[-] Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4
      -[-] Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4
- [-] 5. Video on the home page: (0/8)
+ [+] 5. Video on the home page: (8/8)
 `);
