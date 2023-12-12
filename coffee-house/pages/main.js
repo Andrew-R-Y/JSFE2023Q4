@@ -123,7 +123,7 @@ function slideTouchUp(event) {
   lengthY = endY - touchY;
   if (
     Math.abs(lengthY) > Math.abs(lengthX) ||
-    touchTime > 400 ||
+    touchTime > 600 ||
     Math.abs(lengthY) > 30
   ) {
     return;
