@@ -22,6 +22,7 @@ function escapeFunction(event) {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
     popupWindow.classList.remove('open');
+    FORM.reset();
   }
 }
 
@@ -925,6 +926,24 @@ REFRESH_BUTTON.addEventListener('click', additionalProductsLoad);
 
 // Popup start
 const popupWindow = document.querySelector('.popup');
+const FORM = document.querySelector('.popup__content-block');
+const POPUP_HEADING = document.querySelector('.popup__heading');
+const POPUP_DESCRIPTION = document.querySelector('.popup__description');
+const POPUP_INPUT_S = document.getElementById('s');
+const POPUP_INPUT_M = document.getElementById('m');
+const POPUP_INPUT_L = document.getElementById('l');
+const POPUP_VALUE_S = document.querySelector('.value-s');
+const POPUP_VALUE_M = document.querySelector('.value-m');
+const POPUP_VALUE_L = document.querySelector('.value-l');
+const POPUP_INPUT_ADD_FIRST = document.getElementById('add_first');
+const POPUP_INPUT_ADD_SECOND = document.getElementById('add_second');
+const POPUP_INPUT_ADD_THIRD = document.getElementById('add_third');
+const POPUP_ADDITIVE_FIRST = document.querySelector('.additive-name-first');
+const POPUP_ADDITIVE_SECOND = document.querySelector('.additive-name-second');
+const POPUP_ADDITIVE_THIRD = document.querySelector('.additive-name-third');
+const POPUP_PRICE = document.querySelector('.popup__price-value');
+let popupPrice;
+let currentPrice;
 
 function openPopup(event) {
   if (event.target.closest('.card-item')) {
@@ -933,21 +952,16 @@ function openPopup(event) {
     setPopupName(productName);
     setPopupImageLink(productImageLink);
     const productObj = getItem(products, productName);
-    popupWindow.children[0].children[0].children[1].children[1].innerHTML =
-      productObj.description;
-    popupWindow.children[0].children[0].children[1].children[4].children[1].innerHTML = `$${productObj.price}`;
-    popupWindow.children[0].children[0].children[1].children[2].children[1].children[0].children[0].children[1].innerHTML =
-      productObj.sizes.s.size;
-    popupWindow.children[0].children[0].children[1].children[2].children[1].children[1].children[0].children[1].innerHTML =
-      productObj.sizes.m.size;
-    popupWindow.children[0].children[0].children[1].children[2].children[1].children[2].children[0].children[1].innerHTML =
-      productObj.sizes.l.size;
-    popupWindow.children[0].children[0].children[1].children[3].children[1].children[0].children[0].children[1].innerHTML =
-      productObj.additives[0].name;
-    popupWindow.children[0].children[0].children[1].children[3].children[1].children[1].children[0].children[1].innerHTML =
-      productObj.additives[1].name;
-    popupWindow.children[0].children[0].children[1].children[3].children[1].children[2].children[0].children[1].innerHTML =
-      productObj.additives[2].name;
+    POPUP_DESCRIPTION.innerHTML = productObj.description;
+    POPUP_PRICE.innerHTML = `$${productObj.price}`;
+    popupPrice = +productObj.price;
+    popupPrice = popupPrice.toFixed(2);
+    POPUP_VALUE_S.innerHTML = productObj.sizes.s.size;
+    POPUP_VALUE_M.innerHTML = productObj.sizes.m.size;
+    POPUP_VALUE_L.innerHTML = productObj.sizes.l.size;
+    POPUP_ADDITIVE_FIRST.innerHTML = productObj.additives[0].name;
+    POPUP_ADDITIVE_SECOND.innerHTML = productObj.additives[1].name;
+    POPUP_ADDITIVE_THIRD.innerHTML = productObj.additives[2].name;
     popupWindow.classList.add('open');
     BODY.classList.add('lock');
     popupWindow.addEventListener('click', function (event) {
@@ -960,6 +974,30 @@ function openPopup(event) {
     });
   }
 }
+
+function calculatePrice () {
+  let result = +popupPrice;
+  if (POPUP_INPUT_M.checked) {
+    result += 0.5; 
+  } else if (POPUP_INPUT_L.checked) {
+    result += 1;
+  }
+
+  if (POPUP_INPUT_ADD_FIRST.checked) {
+    result += 0.5;
+  }
+
+  if (POPUP_INPUT_ADD_SECOND.checked) {
+    result += 0.5;
+  }
+  if (POPUP_INPUT_ADD_THIRD.checked) {
+    result += 0.5;
+  }
+  currentPrice = result.toFixed(2);
+  POPUP_PRICE.innerHTML = `$${currentPrice}`;
+}
+
+FORM.addEventListener('click', calculatePrice); 
 
 function getImageLink(card) {
   return card.firstElementChild.firstElementChild.getAttribute('src');
@@ -977,7 +1015,7 @@ function getProductName(card) {
 }
 
 function setPopupName(name) {
-  popupWindow.firstElementChild.firstElementChild.children[1].firstElementChild.innerHTML =
+  POPUP_HEADING.innerHTML =
     name;
 }
 
@@ -990,22 +1028,23 @@ function getItem(array, itemName) {
 function popupClose() {
   popupWindow.classList.remove('open');
   BODY.classList.remove('lock');
+  FORM.reset();
 }
 // Popup end
 
 console.log(`
-score (81/90): 
+score (90/90): 
 [+] 1. Implementation of the burger menu on both pages: (22/22)
 [+] 2. Implementation of the carousel on the home page: (24/24)
 [+] 3. Categories of products on the menu page: (16/16)
-[+/-] 4. The Modal on the menu page: (11/20)
+[+/-] 4. The Modal on the menu page: (20/20)
      -[+] The Modal with the description of a specific product opens when clicking on any part of a card of product: +2
      -[+] The part of the page outside the Modal is darkened: +2
      -[+] When the Modal is open, the vertical scroll of the page becomes inactive; when closed, it becomes active again: +2
      -[+] Clicking on the area around the Modal and Close button closes it: +2
-     -[+/-] The Modal is centered on both axes, sizes of modal elements and their layout match the design: (1/2)
+     -[+] The Modal is centered on both axes, sizes of modal elements and their layout match the design: (2/2)
      -[+] After the Modal is opened, the 'Size' option 'S' is selected, and no option in the 'Additives' section is selected. The product's final price is the same as in the card: +2
-     -[-] Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4
-     -[-] Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4
+     -[+] Only one 'Size' option can be selected. Changing this option also changes the final price of the product based on the choice (+$0.00 for S, +$0.50 for M, +$1.00 for L): +4
+     -[+] Multiple 'Additives' options can be selected, and each selected option increases the final price of the product by $0.50: +4
  [+] 5. Video on the home page: (8/8)
 `);
