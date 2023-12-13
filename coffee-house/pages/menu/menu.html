@@ -276,65 +276,71 @@
               class="popup__image"
             />
           </div>
-          <div class="popup__content-block">
+          <form class="popup__content-block">
             <p class="popup__heading"></p>
             <p class="popup__description"></p>
             <div class="popup__sizes">
               <div class="popup__size">Size</div>
               <div class="popup__size-items">
-                <div class="popup__size-item active-item">
+                <input checked type="radio" name="sizes" class="size-input" id="s">
+                <label for="s" class="popup__size-item">
                   <div class="popup__size-item-content">
                     <div class="popup__size-item-letter">
                       <span>S</span>
                     </div>
-                    <p class="popup__size-item-value"></p>
+                    <p class="popup__size-item-value value-s"></p>
                   </div>
-                </div>
-                <div class="popup__size-item">
+                </label>
+                <input type="radio" name="sizes" class="size-input" id="m">
+                <label for="m" class="popup__size-item">
                   <div class="popup__size-item-content">
                     <div class="popup__size-item-letter">
                       <span>M</span>
                     </div>
-                    <p class="popup__size-item-value"></p>
+                    <p class="popup__size-item-value value-m"></p>
                   </div>
-                </div>
-                <div class="popup__size-item">
+                </label>
+                <input type="radio" name="sizes" class="size-input" id="l">
+                <label for="l" class="popup__size-item">
                   <div class="popup__size-item-content">
                     <div class="popup__size-item-letter">
                       <span>L</span>
                     </div>
-                    <p class="popup__size-item-value"></p>
+                    <p class="popup__size-item-value value-l"></p>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
             <div class="popup__additives">
               <div class="popup__add">Additives</div>
               <div class="popup__add-items">
-                <div class="popup__add-item">
+                <input type="checkbox" name="additives" class="add-input" id="add_first">
+                <label class="popup__add-item" for="add_first">
                   <div class="popup__add-item-content">
                     <div class="popup__add-item-letter">
                       <span>1</span>
                     </div>
-                    <p class="popup__add-item-value"></p>
+                    <p class="popup__add-item-value additive-name-first"></p>
                   </div>
-                </div>
-                <div class="popup__add-item">
+                </label>
+                <input type="checkbox" name="additives" class="add-input" id="add_second">
+                <label class="popup__add-item" for="add_second">
                   <div class="popup__add-item-content">
                     <div class="popup__add-item-letter">
                       <span>2</span>
                     </div>
-                    <p class="popup__add-item-value"></p>
+                    <p class="popup__add-item-value additive-name-second"></p>
                   </div>
-                </div>
-                <div class="popup__add-item">
+                </label>
+                <input type="checkbox" name="additives" class="add-input" id="add_third">
+                <label class="popup__add-item" for="add_third">
                   <div class="popup__add-item-content">
                     <div class="popup__add-item-letter">
                       <span>3</span>
                     </div>
-                    <p class="popup__add-item-value"></p>
+                    <p class="popup__add-item-value additive-name-third"></p>
                   </div>
-                </div>
+                </label>
               </div>
             </div>
             <div class="popup__price-block">
@@ -354,7 +360,7 @@
               </span>
             </div>
             <div class="popup__close-button"><span>Close</span></div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
