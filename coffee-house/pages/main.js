@@ -1,11 +1,17 @@
+const BODY = document.querySelector('body');
 const BURGER_BUTTON = document.querySelector('.header__burger-menu');
 const HEADER_NAV_MENU = document.querySelector('.header__nav-list');
+
+window.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
 
 // burger menu start
 function openBurger(event) {
   if (event.target.closest('.header__burger-menu')) {
     HEADER_NAV_MENU.classList.toggle('open-nav');
     BURGER_BUTTON.classList.toggle('open');
+    BODY.classList.toggle('lock');
   }
   if (
     !event.target.closest('.header__burger-menu') &&
@@ -14,6 +20,7 @@ function openBurger(event) {
   ) {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
+    BODY.classList.remove('lock');
   }
 }
 
@@ -21,6 +28,7 @@ function escapeFunction(event) {
   if (event.code === 'Escape') {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
+    BODY.classList.remove('lock');
   }
 }
 
@@ -123,8 +131,8 @@ function slideTouchUp(event) {
   lengthY = endY - touchY;
   if (
     Math.abs(lengthY) > Math.abs(lengthX) ||
-    touchTime > 600 ||
-    Math.abs(lengthY) > 30
+    touchTime > 800 ||
+    Math.abs(lengthY) > 50
   ) {
     return;
   }
