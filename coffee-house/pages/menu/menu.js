@@ -1,11 +1,17 @@
+const BODY = document.querySelector('body');
 const BURGER_BUTTON = document.querySelector('.header__burger-menu');
 const HEADER_NAV_MENU = document.querySelector('.header__nav-list');
+
+window.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
 
 // burger menu start
 function openBurger(event) {
   if (event.target.closest('.header__burger-menu')) {
     HEADER_NAV_MENU.classList.toggle('open-nav');
     BURGER_BUTTON.classList.toggle('open');
+    BODY.classList.toggle('lock');
   }
   if (
     !event.target.closest('.header__burger-menu') &&
@@ -14,6 +20,7 @@ function openBurger(event) {
   ) {
     HEADER_NAV_MENU.classList.remove('open-nav');
     BURGER_BUTTON.classList.remove('open');
+    BODY.classList.remove('lock');
   }
 }
 
@@ -23,6 +30,7 @@ function escapeFunction(event) {
     BURGER_BUTTON.classList.remove('open');
     popupWindow.classList.remove('open');
     FORM.reset();
+    BODY.classList.remove('lock');
   }
 }
 
@@ -38,7 +46,6 @@ const TEA_BUTTON = document.getElementById('tea');
 const DESSERT_BUTTON = document.getElementById('dessert');
 const REFRESH_BLOCK = document.querySelector('.refresh-block');
 const REFRESH_BUTTON = document.querySelector('.refresh-button');
-const BODY = document.querySelector('body');
 
 const products = [
   {
