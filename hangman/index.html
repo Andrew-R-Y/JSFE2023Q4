@@ -3,10 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>Hangman game</title>
   </head>
   <body>
+    <main class="page-wrapper">
+      <div class="game-wrapper">
+        <div class="gallow-side">
+          <div class="gallow-side__gallow">
+            <img
+              src="./img/hangman-6.svg"
+              alt="gallow image"
+              class="gallow-side__image"
+            />
+          </div>
+          <h1 class="gallow-side__main-heading">hangman game</h1>
+        </div>
+        <div class="quiz-side">
+          <div class="quiz-side__keyword">
+            <div class="quiz-side__letter">
+              <span class="quiz-side__underscore"></span>
+            </div>
+            <div class="quiz-side__letter">
+              <span class="quiz-side__underscore"></span>
+            </div>
+            <div class="quiz-side__letter">c</div>
+            <div class="quiz-side__letter">
+              <span class="quiz-side__underscore"></span>
+            </div>
+            <div class="quiz-side__letter">c</div>
+            <div class="quiz-side__letter">
+              <span class="quiz-side__underscore"></span>
+            </div>
+            <div class="quiz-side__letter">
+              <span class="quiz-side__underscore"></span>
+            </div>
+          </div>
+          <div class="quiz-side__text">
+            <p class="quiz-side__hint">
+              Hint: A human-powered vehicle with two wheels
+            </p>
+            <p class="quiz-side__incorrect-count">
+              Incorrect guesses:&nbsp;<span class="quiz-side__count" id="count"
+                >0</span
+              ><span class="quiz-side__count">&nbsp;/&nbsp;6</span>
+            </p>
+          </div>
+          <div class="quiz-side__keyboard">
+            <div class="quiz-side__button">a</div>
+            <div class="quiz-side__button">b</div>
+            <div class="quiz-side__button">c</div>
+            <div class="quiz-side__button">d</div>
+            <div class="quiz-side__button">e</div>
+            <div class="quiz-side__button">f</div>
+            <div class="quiz-side__button">g</div>
+            <div class="quiz-side__button">h</div>
+            <div class="quiz-side__button">i</div>
+            <div class="quiz-side__button">j</div>
+            <div class="quiz-side__button">k</div>
+            <div class="quiz-side__button">l</div>
+            <div class="quiz-side__button">m</div>
+            <div class="quiz-side__button">n</div>
+            <div class="quiz-side__button">o</div>
+            <div class="quiz-side__button">p</div>
+            <div class="quiz-side__button">q</div>
+            <div class="quiz-side__button">r</div>
+            <div class="quiz-side__button">s</div>
+            <div class="quiz-side__button">t</div>
+            <div class="quiz-side__button">u</div>
+            <div class="quiz-side__button">v</div>
+            <div class="quiz-side__button">w</div>
+            <div class="quiz-side__button">x</div>
+            <div class="quiz-side__button">y</div>
+            <div class="quiz-side__button">z</div>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>
