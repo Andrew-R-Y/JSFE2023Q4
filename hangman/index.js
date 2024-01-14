@@ -87,7 +87,6 @@ const engLettersArr = [
   'h',
   'i',
   'j',
-  'g',
   'k',
   'l',
   'm',
@@ -121,45 +120,86 @@ const questionsArr = [
   pair12,
   pair13,
   pair14,
+  pair15,
 ];
-
-function getRandomQuestionNumber(arr) {
-  let result = 0;
-  result = Math.random() * arr.length;
-  result = Math.floor(result);
-  return result;
-}
-
-wrongAttemptCount = 0;
-
-let randomNumber = getRandomQuestionNumber(questionsArr);
-console.log('Array length is:', questionsArr.length);
-console.log('Random number is:', randomNumber);
-
-let currentPair = questionsArr[randomNumber];
-let question = currentPair.question;
-let answer = currentPair.answer;
-console.log('answer:', answer);
-answer = answer.toLowerCase();
-restOfword = answer;
 
 const KEYWORD = document.querySelector('.quiz-side__keyword');
 const HINT = document.querySelector('.quiz-side__hint');
 const GALLOW_IMAGE = document.querySelector('.gallow-side__image');
 const MISTAKES_COUNTER = document.getElementById('count');
+const POPUP_WINDOW = document.querySelector('.popup');
+const POPUP_RESULT = document.querySelector('.popup__result');
+const POPUP_ANSWER = document.querySelector('.popup__answer');
+const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
+const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
+const BUTTONS = document.querySelectorAll('.quiz-side__button');
+
+let prevRanomNumber;
+let wrongAttemptCount = 0;
+let usedLetters = [];
 let gameStopped = false;
+let randomNumber;
+let currentPair;
+let question;
+let answer;
+let answerOriginal;
+let restOfword;
+let keywordLetters;
+
+function getRandomQuestionNumber(arr) {
+  let result = 0;
+  result = Math.random() * arr.length;
+  result = Math.floor(result);
+  if (result === prevRanomNumber) {
+    return getRandomQuestionNumber(arr);
+  }
+  prevRanomNumber = result;
+  return result;
+}
+
+function closeAndPlay() {
+  removePrevValues();
+  MISTAKES_COUNTER.textContent = 0;
+  usedLetters = [];
+  wrongAttemptCount = 0;
+  randomNumber = getRandomQuestionNumber(questionsArr);
+  currentPair = questionsArr[randomNumber];
+  question = currentPair.question;
+  answer = currentPair.answer;
+  answerOriginal = answer;
+  console.log('answer:', answerOriginal);
+  answer = answer.toLowerCase();
+  restOfword = answer;
+  gameStopped = false;
+  HINT.textContent = `Hint: ${question}`;
+  fillKeywordField(answer);
+  keywordLetters = document.querySelectorAll('.quiz-side__letter');
+  closePopup();
+}
+
+closeAndPlay();
+
+console.log('Random number is:', randomNumber);
+
+function openPopup() {
+  POPUP_WINDOW.classList.add('open');
+}
+
+function closePopup() {
+  POPUP_WINDOW.classList.remove('open');
+}
 
 function removePrevValues() {
   while (KEYWORD.firstChild) {
     KEYWORD.firstChild.remove();
   }
   HINT.textContent = '';
+  GALLOW_IMAGE.setAttribute('src', `./img/hangman-0.svg`);
+  for (item of BUTTONS) {
+    item.removeAttribute('disabled');
+    item.classList.remove('disabled');
+  }
 }
-
-MISTAKES_COUNTER.textContent = 0;
-removePrevValues();
-
-HINT.textContent = `Hint: ${question}`;
 
 function fillKeywordField(word) {
   for (let i = 0; i < word.length; i += 1) {
@@ -172,11 +212,6 @@ function fillKeywordField(word) {
   }
 }
 
-const usedLetters = [];
-
-fillKeywordField(answer);
-const keywordLetters = document.querySelectorAll('.quiz-side__letter');
-
 function buttonHandler(event) {
   const key = event.key.toLowerCase();
   if (usedLetters.includes(key) || gameStopped) {
@@ -188,6 +223,12 @@ function buttonHandler(event) {
     );
     return;
   }
+  const keyNumber = engLettersArr.indexOf(key);
+  if (key !== 'f5') {
+    BUTTONS[keyNumber].setAttribute('disabled', true);
+    BUTTONS[keyNumber].classList.add('disabled');
+  }
+
   if (restOfword.includes(key)) {
     const letterIndexes = [];
     for (let i = 0; i < answer.length; i += 1) {
@@ -200,10 +241,11 @@ function buttonHandler(event) {
     });
     restOfword = restOfword.replaceAll(key, '');
     usedLetters.push(key);
-    console.log(usedLetters);
     if (!restOfword) {
       gameStopped = true;
-      console.log('You win!');
+      POPUP_RESULT.textContent = 'CONGRATULATIONS! YOU WIN !';
+      POPUP_ANSWER.textContent = `Correct answer is: ${answerOriginal}`;
+      openPopup();
     }
   } else if (!usedLetters.includes(key) && key !== 'f5') {
     wrongLetterHandle(key);
@@ -217,11 +259,15 @@ function wrongLetterHandle(key) {
     GALLOW_IMAGE.setAttribute('src', `./img/hangman-${wrongAttemptCount}.svg`);
     MISTAKES_COUNTER.textContent = wrongAttemptCount;
   }
-  if (wrongAttemptCount >= 6) {
+  if (wrongAttemptCount === 6) {
     gameStopped = true;
-    console.log('Game over!');
+    POPUP_RESULT.textContent = 'YOU LOOSE !';
+    POPUP_ANSWER.textContent = `Correct answer is: ${answerOriginal}`;
+    openPopup();
     return;
   }
 }
 
 document.addEventListener('keyup', buttonHandler);
+POPUP_CLOSE_BTN.addEventListener('click', closePopup);
+POPUP_PLAY_BTN.addEventListener('click', closeAndPlay);
