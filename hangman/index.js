@@ -200,16 +200,18 @@ function buttonHandler(event) {
     });
     restOfword = restOfword.replaceAll(key, '');
     usedLetters.push(key);
+    console.log(usedLetters);
     if (!restOfword) {
       gameStopped = true;
       console.log('You win!');
     }
   } else if (!usedLetters.includes(key) && key !== 'f5') {
-    wrongLetterHandle();
+    wrongLetterHandle(key);
   }
 }
 
-function wrongLetterHandle() {
+function wrongLetterHandle(key) {
+  usedLetters.push(key);
   wrongAttemptCount += 1;
   if (wrongAttemptCount <= 6) {
     GALLOW_IMAGE.setAttribute('src', `./img/hangman-${wrongAttemptCount}.svg`);
