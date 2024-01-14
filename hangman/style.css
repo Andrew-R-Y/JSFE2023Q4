@@ -29,9 +29,6 @@
   min-width: 280px;
 }
 
-.gallow-side {
-}
-
 .gallow-side__gallow {
   object-fit: contain;
 }
@@ -83,11 +80,6 @@
   font-weight: 700;
   text-align: center;
   user-select: none;
-}
-
-.quiz-side__hint {
-}
-.quiz-side__incorrect-count {
 }
 
 .quiz-side__count {
@@ -153,6 +145,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .quiz-side__letter {
+    min-width: 25px;
+  }
+}
+
 @media (max-width: 520px) {
   .gallow-side__gallow {
     width: 50%;
@@ -168,9 +166,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 7px;
     min-height: 40px;
     font: 700 25px 'Inter', sans-serif;
+  }
+
+  .quiz-side__letter {
+    min-width: 20px;
   }
 
   .quiz-side__hint {
@@ -185,12 +187,16 @@
     font-size: 18px;
   }
 
-  .quiz-side__hint {
-  }
-
   .quiz-side__button {
     min-width: 30px;
     min-height: 30px;
     font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-side__hint {
+    margin-top: 12px;
+    font-size: 16px;
   }
 }
