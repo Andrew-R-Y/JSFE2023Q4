@@ -15,8 +15,8 @@ const pair3 = {
 };
 
 const pair4 = {
-  question: 'What planet is closest to the sun?',
-  answer: 'Mercury',
+  question: 'Which U.S. state is known as the Sunshine State',
+  answer: 'Florida',
 };
 
 const pair5 = {
@@ -25,8 +25,8 @@ const pair5 = {
 };
 
 const pair6 = {
-  question: 'What is the slang name for New York City, used by locals?',
-  answer: 'Gotham',
+  question: 'Which country gifted the Statue of Liberty to the US?',
+  answer: 'France',
 };
 
 const pair7 = {
@@ -51,13 +51,28 @@ const pair10 = {
 };
 
 const pair11 = {
-  question: `A dude named Chip Morningstar received the first JSON message, a format derived from what core language repped by the "JS"?`,
+  question: `What is the most used programming language among developers worldwide as of 2023`,
   answer: 'JavaScript',
 };
 
 const pair12 = {
   question: `Linux uses all the letters of what operating system family that it was designed to imitate?`,
   answer: 'Unix',
+};
+
+const pair13 = {
+  question: 'Which U.S. State is the largest?',
+  answer: 'Alaska',
+};
+
+const pair14 = {
+  question: 'Steve Jobs, the CEO of Apple, is known for wearing a black ___?',
+  answer: 'Turtleneck',
+};
+
+const pair15 = {
+  question: 'Which country drinks the most amount of coffee per person? ',
+  answer: 'Finland',
 };
 // Quiz questions end
 
@@ -71,6 +86,7 @@ const engLettersArr = [
   'g',
   'h',
   'i',
+  'j',
   'g',
   'k',
   'l',
@@ -103,6 +119,8 @@ const questionsArr = [
   pair10,
   pair11,
   pair12,
+  pair13,
+  pair14,
 ];
 
 function getRandomQuestionNumber(arr) {
@@ -111,6 +129,8 @@ function getRandomQuestionNumber(arr) {
   result = Math.floor(result);
   return result;
 }
+
+wrongAttemptCount = 0;
 
 let randomNumber = getRandomQuestionNumber(questionsArr);
 console.log('Array length is:', questionsArr.length);
@@ -125,6 +145,10 @@ restOfword = answer;
 
 const KEYWORD = document.querySelector('.quiz-side__keyword');
 const HINT = document.querySelector('.quiz-side__hint');
+const GALLOW_IMAGE = document.querySelector('.gallow-side__image');
+const MISTAKES_COUNTER = document.getElementById('count');
+let gameStopped = false;
+
 function removePrevValues() {
   while (KEYWORD.firstChild) {
     KEYWORD.firstChild.remove();
@@ -132,6 +156,7 @@ function removePrevValues() {
   HINT.textContent = '';
 }
 
+MISTAKES_COUNTER.textContent = 0;
 removePrevValues();
 
 HINT.textContent = `Hint: ${question}`;
@@ -154,10 +179,10 @@ const keywordLetters = document.querySelectorAll('.quiz-side__letter');
 
 function buttonHandler(event) {
   const key = event.key.toLowerCase();
-  if (usedLetters.includes(key)) {
+  if (usedLetters.includes(key) || gameStopped) {
     return;
   }
-  if (!engLettersArr.includes(key)) {
+  if (!engLettersArr.includes(key) && key !== 'f5') {
     console.log(
       'Please, check keyboard layout. Only english letters are allowed'
     );
@@ -173,8 +198,27 @@ function buttonHandler(event) {
     letterIndexes.forEach((index) => {
       keywordLetters[index].textContent = key;
     });
-    restOfword.replaceAll(key);
+    restOfword = restOfword.replaceAll(key, '');
     usedLetters.push(key);
+    if (!restOfword) {
+      gameStopped = true;
+      console.log('You win!');
+    }
+  } else if (!usedLetters.includes(key) && key !== 'f5') {
+    wrongLetterHandle();
+  }
+}
+
+function wrongLetterHandle() {
+  wrongAttemptCount += 1;
+  if (wrongAttemptCount <= 6) {
+    GALLOW_IMAGE.setAttribute('src', `./img/hangman-${wrongAttemptCount}.svg`);
+    MISTAKES_COUNTER.textContent = wrongAttemptCount;
+  }
+  if (wrongAttemptCount >= 6) {
+    gameStopped = true;
+    console.log('Game over!');
+    return;
   }
 }
 
