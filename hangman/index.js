@@ -132,6 +132,7 @@ const POPUP_RESULT = document.querySelector('.popup__result');
 const POPUP_ANSWER = document.querySelector('.popup__answer');
 const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
 const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
+const VIRTUAL_KEYBOARD = document.querySelector('.quiz-side__keyboard');
 const BUTTONS = document.querySelectorAll('.quiz-side__button');
 
 let prevRanomNumber;
@@ -178,8 +179,6 @@ function closeAndPlay() {
 }
 
 closeAndPlay();
-
-console.log('Random number is:', randomNumber);
 
 function openPopup() {
   POPUP_WINDOW.classList.add('open');
@@ -268,6 +267,38 @@ function wrongLetterHandle(key) {
   }
 }
 
+function virtualKeyboardHandler(event) {
+  const key = event.target.textContent;
+  if (!engLettersArr.includes(key) || gameStopped) {
+    return;
+  }
+  event.target.setAttribute('disabled', true);
+  event.target.classList.add('disabled');
+
+  if (restOfword.includes(key)) {
+    const letterIndexes = [];
+    for (let i = 0; i < answer.length; i += 1) {
+      if (answer[i] === key) {
+        letterIndexes.push(i);
+      }
+    }
+    letterIndexes.forEach((index) => {
+      keywordLetters[index].textContent = key;
+    });
+    restOfword = restOfword.replaceAll(key, '');
+    usedLetters.push(key);
+    if (!restOfword) {
+      gameStopped = true;
+      POPUP_RESULT.textContent = 'CONGRATULATIONS! YOU WIN!';
+      POPUP_ANSWER.textContent = `Correct answer is: ${answerOriginal}`;
+      openPopup();
+    }
+  } else if (!usedLetters.includes(key) && key !== 'f5') {
+    wrongLetterHandle(key);
+  }
+}
+
+VIRTUAL_KEYBOARD.addEventListener('click', virtualKeyboardHandler);
 document.addEventListener('keyup', buttonHandler);
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', closeAndPlay);
