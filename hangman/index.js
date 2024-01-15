@@ -71,10 +71,71 @@ const pair14 = {
 };
 
 const pair15 = {
-  question: 'Which country drinks the most amount of coffee per person? ',
+  question: 'Which country drinks the most amount of coffee per person?',
   answer: 'Finland',
 };
+
+const pair16 = {
+  question: 'What is the capital of Finland?',
+  answer: 'Helsinki',
+};
+
+const pair17 = {
+  question: 'Zagreb is the capital city of which country?',
+  answer: 'Croatia',
+};
+
+const pair18 = {
+  question: 'Which country has the longest coastline in the world?',
+  answer: 'Canada',
+};
+
+const pair19 = {
+  question: 'What product did Amazon originally sell?',
+  answer: 'Books',
+};
+
+const pair20 = {
+  question:
+    'Which prestigious university did Microsoft founder Bill Gates drop out of?',
+  answer: 'Harvard',
+};
+
+const pair21 = {
+  question: `What is the name of Elon Musk's aerospace company?`,
+  answer: 'SpaceX',
+};
+
+const pair22 = {
+  question: 'Which company developed the first mobile phone?',
+  answer: 'Motorola',
+};
 // Quiz questions end
+
+const questionsArr = [
+  pair1,
+  pair2,
+  pair3,
+  pair4,
+  pair5,
+  pair6,
+  pair7,
+  pair8,
+  pair9,
+  pair10,
+  pair11,
+  pair12,
+  pair13,
+  pair14,
+  pair15,
+  pair16,
+  pair17,
+  pair18,
+  pair19,
+  pair20,
+  pair21,
+  pair22,
+];
 
 const engLettersArr = [
   'a',
@@ -103,24 +164,6 @@ const engLettersArr = [
   'x',
   'y',
   'z',
-];
-
-const questionsArr = [
-  pair1,
-  pair2,
-  pair3,
-  pair4,
-  pair5,
-  pair6,
-  pair7,
-  pair8,
-  pair9,
-  pair10,
-  pair11,
-  pair12,
-  pair13,
-  pair14,
-  pair15,
 ];
 
 // Create DOM start
