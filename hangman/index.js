@@ -123,6 +123,132 @@ const questionsArr = [
   pair15,
 ];
 
+// Create DOM start
+// Create main start
+const main = document.createElement('main');
+main.classList.add('page-wrapper');
+
+const gameWrapper = document.createElement('div');
+gameWrapper.classList.add('game-wrapper');
+
+// gallow side start
+const gallowSide = document.createElement('div');
+gallowSide.classList.add('gallow-side');
+
+const gallowSideGallow = document.createElement('div');
+gallowSideGallow.classList.add('gallow-side__gallow');
+
+const gallowImage = document.createElement('img');
+gallowImage.classList.add('gallow-side__image');
+gallowImage.setAttribute('src', './img/hangman-0.svg');
+gallowImage.setAttribute('alt', 'gallow image');
+
+const mainHeading = document.createElement('h1');
+mainHeading.classList.add('gallow-side__main-heading');
+mainHeading.textContent = 'hangman game';
+
+gallowSideGallow.append(gallowImage);
+gallowSide.append(gallowSideGallow);
+gallowSide.append(mainHeading);
+// gallow side end
+
+// quiz side start
+const quizSide = document.createElement('div');
+quizSide.classList.add('quiz-side');
+
+const quizSideKeyword = document.createElement('div');
+quizSideKeyword.classList.add('quiz-side__keyword');
+
+const quizSideText = document.createElement('div');
+quizSideText.classList.add('quiz-side__text');
+
+const quizSideHint = document.createElement('p');
+quizSideHint.classList.add('quiz-side__hint');
+
+const quizSideIncorrectCount = document.createElement('p');
+quizSideIncorrectCount.classList.add('uiz-side__incorrect-count');
+quizSideIncorrectCount.innerHTML = 'Incorrect guesses:&nbsp;';
+const spanCount = document.createElement('span');
+spanCount.classList.add('quiz-side__count');
+spanCount.setAttribute('id', 'count');
+spanCount.textContent = '0';
+
+const spanMaxCount = document.createElement('span');
+spanMaxCount.classList.add('quiz-side__count');
+spanMaxCount.innerHTML = '&nbsp;/&nbsp;6';
+
+const quizSideBoard = document.createElement('div');
+quizSideBoard.classList.add('quiz-side__keyboard');
+for (let i = 0; i < engLettersArr.length; i += 1) {
+  const btn = document.createElement('button');
+  btn.classList.add('quiz-side__button');
+  btn.textContent = engLettersArr[i];
+  quizSideBoard.append(btn);
+}
+
+quizSideIncorrectCount.append(spanCount);
+quizSideIncorrectCount.append(spanMaxCount);
+quizSideText.append(quizSideHint);
+quizSideText.append(quizSideIncorrectCount);
+
+quizSide.append(quizSideKeyword);
+quizSide.append(quizSideText);
+quizSide.append(quizSideBoard);
+// quiz side end
+
+gameWrapper.append(gallowSide);
+gameWrapper.append(quizSide);
+main.append(gameWrapper);
+//Create main end
+
+// Create popup start
+const popup = document.createElement('div');
+popup.classList.add('popup');
+
+const popupBody = document.createElement('div');
+popupBody.classList.add('popup__body');
+
+const popupContent = document.createElement('div');
+popupContent.classList.add('popup__content');
+
+const popupResult = document.createElement('p');
+popupResult.classList.add('popup__result');
+
+const popupAnswer = document.createElement('p');
+popupAnswer.classList.add('popup__answer');
+
+const popupButtons = document.createElement('div');
+popupButtons.classList.add('popup__buttons');
+
+const popupBtnPlay = document.createElement('button');
+popupBtnPlay.classList.add('popup__button');
+popupBtnPlay.classList.add('popup__button-play');
+const playSpan = document.createElement('span');
+playSpan.textContent = 'Play again';
+popupBtnPlay.append(playSpan);
+
+const popupBtnClose = document.createElement('button');
+popupBtnClose.classList.add('popup__button');
+popupBtnClose.classList.add('popup__button-close');
+const closeSpan = document.createElement('span');
+closeSpan.textContent = 'Close';
+popupBtnClose.append(closeSpan);
+
+popupButtons.append(popupBtnPlay);
+popupButtons.append(popupBtnClose);
+
+popupContent.append(popupResult);
+popupContent.append(popupAnswer);
+popupContent.append(popupButtons);
+
+popupBody.append(popupContent);
+popup.append(popupBody);
+// Create popup end
+
+document.body.append(main);
+document.body.append(popup);
+// Create DOM end
+
 const KEYWORD = document.querySelector('.quiz-side__keyword');
 const HINT = document.querySelector('.quiz-side__hint');
 const GALLOW_IMAGE = document.querySelector('.gallow-side__image');
@@ -298,7 +424,7 @@ function virtualKeyboardHandler(event) {
   }
 }
 
-VIRTUAL_KEYBOARD.addEventListener('click', virtualKeyboardHandler);
 document.addEventListener('keyup', buttonHandler);
+VIRTUAL_KEYBOARD.addEventListener('click', virtualKeyboardHandler);
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', closeAndPlay);
