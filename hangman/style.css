@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 :root {
   --background-body: #f5f5dc;
   --background-container: #665f55;
@@ -229,7 +230,6 @@
     color: var(--text-light);
   }
 }
-
 /* Popup styles end */
 
 /* Media queries start */
@@ -252,13 +252,11 @@
   .quiz-side__hint {
     margin-top: 15px;
     margin-bottom: 15px;
-    /* font-size: 18px; */
   }
 
   .quiz-side__incorrect-count {
     margin-top: 15px;
     margin-bottom: 15px;
-    /* font-size: 18px; */
   }
 
   .popup__content {
