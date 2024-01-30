@@ -166,6 +166,14 @@ const engLettersArr = [
   'z',
 ];
 
+let usedQuestionsNumbersArr = [];
+function restartAllQuestions() {
+  alert(
+    `Congratulations! You answered all questions! If you want to play one more round - press "OK", all the questions will be repeated`
+  );
+  usedQuestionsNumbersArr = [];
+}
+
 // Create DOM start
 // Create main start
 const main = document.createElement('main');
@@ -317,10 +325,17 @@ let restOfword;
 let keywordLetters;
 
 function getRandomQuestionNumber(arr) {
+  if (usedQuestionsNumbersArr.length === questionsArr.length) {
+    restartAllQuestions();
+  }
   let result = 0;
   result = Math.random() * arr.length;
   result = Math.floor(result);
-  if (result === prevRanomNumber) {
+  if (
+    (result === prevRanomNumber &&
+      questionsArr.length - usedQuestionsNumbersArr.length !== 1) ||
+    usedQuestionsNumbersArr.includes(result)
+  ) {
     return getRandomQuestionNumber(arr);
   }
   prevRanomNumber = result;
@@ -413,6 +428,7 @@ function buttonHandler(event) {
       gameStopped = true;
       POPUP_RESULT.textContent = 'CONGRATULATIONS! YOU WIN !';
       POPUP_ANSWER.textContent = `Correct answer is: ${answerOriginal}`;
+      usedQuestionsNumbersArr.push(randomNumber);
       openPopup();
     }
   } else if (!usedLetters.includes(key) && key !== 'f5') {
@@ -467,7 +483,17 @@ function virtualKeyboardHandler(event) {
   }
 }
 
+function popupKeyHandler(event) {
+  if (event.code === 'Enter' && gameStopped) {
+    closeAndPlay();
+  }
+  if (event.code === 'Escape' && gameStopped) {
+    closePopup();
+  }
+}
+
 document.addEventListener('keyup', buttonHandler);
 VIRTUAL_KEYBOARD.addEventListener('click', virtualKeyboardHandler);
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', closeAndPlay);
+document.addEventListener('keyup', popupKeyHandler);
