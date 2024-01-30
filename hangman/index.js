@@ -312,7 +312,6 @@ const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 const VIRTUAL_KEYBOARD = document.querySelector('.quiz-side__keyboard');
 const BUTTONS = document.querySelectorAll('.quiz-side__button');
 
-let prevRanomNumber;
 let wrongAttemptCount = 0;
 let usedLetters = [];
 let gameStopped = false;
@@ -331,14 +330,9 @@ function getRandomQuestionNumber(arr) {
   let result = 0;
   result = Math.random() * arr.length;
   result = Math.floor(result);
-  if (
-    (result === prevRanomNumber &&
-      questionsArr.length - usedQuestionsNumbersArr.length !== 1) ||
-    usedQuestionsNumbersArr.includes(result)
-  ) {
+  if (usedQuestionsNumbersArr.includes(result)) {
     return getRandomQuestionNumber(arr);
   }
-  prevRanomNumber = result;
   return result;
 }
 
@@ -476,6 +470,7 @@ function virtualKeyboardHandler(event) {
       gameStopped = true;
       POPUP_RESULT.textContent = 'CONGRATULATIONS! YOU WIN!';
       POPUP_ANSWER.textContent = `Correct answer is: ${answerOriginal}`;
+      usedQuestionsNumbersArr.push(randomNumber);
       openPopup();
     }
   } else if (!usedLetters.includes(key) && key !== 'f5') {
