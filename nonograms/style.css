@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-body: #f5f5dc;
+  --background-container: #665f55;
+  --text-dark: #403f3d;
+  --text-light: #e1d4c9;
+  --border-dark: #665f55;
+}
+
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-body);
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.game-wrapper {
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu,
+.game {
+  padding: 10px;
+  min-width: 280px;
+}
