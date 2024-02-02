@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  align-items: center;
   gap: 20px;
 }
 
@@ -54,9 +55,12 @@
   background-color: lightblue;
   border-radius: 20px;
 }
+
 .button-section {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px 10px;
 }
 
 .button {
@@ -80,6 +84,33 @@
 }
 
 .game {
+  min-width: 400px;
+  max-width: 600px;
+  min-height: 400px;
+  padding: 0;
+  display: grid;
   background-color: aquamarine;
   border-radius: 20px;
+  grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cell {
+  background-color: #ffffff;
+}
+
+.top-clue {
+  min-width: 30px;
+  min-height: 30px;
+  border-bottom: 2px solid black;
+}
+
+.left-clue {
+  min-width: 30px;
+  min-height: 30px;
+  border-right: 2px solid black;
+}
+
+.valid {
+  background-color: #000000;
 }
