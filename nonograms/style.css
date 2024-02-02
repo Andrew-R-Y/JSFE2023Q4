@@ -15,7 +15,7 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: var(--background-body);
   padding: 20px;
   font-family: 'Inter', sans-serif;
@@ -25,11 +25,61 @@
   width: 100%;
   max-width: 1240px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+}
+
+.main-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.subheading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10px;
 }
 
 .menu,
 .game {
   padding: 10px;
   min-width: 280px;
+}
+
+.menu {
+  background-color: lightblue;
+  border-radius: 20px;
+}
+.button-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  min-height: 30px;
+  min-width: 70px;
+  background-color: var(--background-body);
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button.active {
+  cursor: auto;
+  background-color: lightgreen;
+}
+
+.game {
+  background-color: aquamarine;
+  border-radius: 20px;
 }
