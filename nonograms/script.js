@@ -92,6 +92,7 @@ function choosePuzzle(event) {
   determineSize(puzzle);
   clearGameField();
   fillGameField(puzzle);
+  fillLineClue(puzzle);
 }
 
 for (const button of BUTTONS) {
@@ -125,6 +126,39 @@ function fillGameField(puzzle) {
         }
       }
       GAME.append(cell);
+    }
+  }
+}
+
+function fillLineClue(puzzle) {
+  let cellNumber = 0;
+  for (let i = 0; i < size; i += 1) {
+    const lineClueArr = [];
+    let lineClue = 0;
+
+    for (let j = 0; j < size; j += 1) {
+      if (i !== 0 && j !== 0) {
+        if (puzzle.layout[i - 1][j - 1] === 1) {
+          lineClue += 1;
+          if (j === size - 1) {
+            lineClueArr.push(lineClue);
+          }
+        } else if (lineClue !== 0) {
+          lineClueArr.push(lineClue);
+          lineClue = 0;
+        }
+      }
+      if (i !== 0 && j === size - 1) {
+        if (lineClueArr.length) {
+          lineClueArr.forEach((item) => {
+            const clue = document.createElement('span');
+            clue.classList.add('clue');
+            clue.textContent = item;
+            GAME.children[i * size].append(clue);
+          });
+        }
+      }
+      cellNumber += 1;
     }
   }
 }
