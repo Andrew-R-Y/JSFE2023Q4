@@ -102,10 +102,12 @@
   border-radius: 20px;
   grid-template-columns: auto repeat(5, 70px);
   grid-template-rows: auto repeat(5, 70px);
+  user-select: none;
 }
 
 .cell {
   background-color: #ffffff;
+  border: 1px solid var(--border-dark);
 }
 
 .top-clue {
@@ -137,5 +139,9 @@
 }
 
 .valid {
+}
+
+.mark {
   background-color: #000000;
+  border-color: #000000;
 }
