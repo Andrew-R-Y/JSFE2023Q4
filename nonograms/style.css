@@ -145,3 +145,10 @@
   background-color: #000000;
   border-color: #000000;
 }
+
+.empty-cell {
+  background-image: url(./img/cross.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

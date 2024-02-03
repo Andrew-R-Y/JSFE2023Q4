@@ -215,6 +215,19 @@ function markCell(event) {
   }
 }
 
+function emptyCell(event) {
+  const cell = event.target;
+  if (
+    cell.classList.contains('left-clue') ||
+    cell.classList.contains('top-clue')
+  ) {
+    return;
+  }
+  cell.classList.remove('mark');
+  cell.classList.add('empty-cell');
+  event.preventDefault();
+}
+
 function checkSolution() {
   let currentSolution = 0;
   for (const cell of GAME.children) {
@@ -232,4 +245,5 @@ function checkSolution() {
 }
 
 GAME.addEventListener('click', markCell);
+GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
