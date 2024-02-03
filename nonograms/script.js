@@ -75,6 +75,12 @@ let result = 0;
 
 const BUTTONS = document.querySelectorAll('.button');
 const GAME = document.querySelector('.game');
+const POPUP_WINDOW = document.querySelector('.popup');
+const POPUP_RESULT = document.querySelector('.popup__result');
+const POPUP_ANSWER = document.querySelector('.popup__answer');
+const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
+const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
+
 for (let i = 0; i < BUTTONS.length; i += 1) {
   BUTTONS[i].textContent = data[i].name;
 }
@@ -239,11 +245,22 @@ function checkSolution() {
     }
   }
   if (currentSolution === result && result) {
-    console.log('CONGRATULATIONS! YOU WIN!');
-    // clearGameField();
+    POPUP_WINDOW.classList.add('open');
   }
+}
+
+function playAgain() {
+  clearGameField();
+  POPUP_WINDOW.classList.remove('open');
+}
+
+function closePopup() {
+  POPUP_WINDOW.classList.remove('open');
 }
 
 GAME.addEventListener('click', markCell);
 GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
+
+POPUP_CLOSE_BTN.addEventListener('click', closePopup);
+POPUP_PLAY_BTN.addEventListener('click', playAgain);
