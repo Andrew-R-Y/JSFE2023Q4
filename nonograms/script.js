@@ -71,6 +71,7 @@ let puzzleName = '';
 let puzzle;
 let size = 0;
 let fieldSize = 0;
+let result = 0;
 
 const BUTTONS = document.querySelectorAll('.button');
 const GAME = document.querySelector('.game');
@@ -95,6 +96,7 @@ function choosePuzzle(event) {
   fillGameField(puzzle);
   fillLineClue(puzzle);
   fillColumnClue(puzzle);
+  determineResult(puzzle);
 }
 
 for (const button of BUTTONS) {
@@ -104,6 +106,15 @@ for (const button of BUTTONS) {
 function determineSize(puzzle) {
   fieldSize = puzzle.layout.length + 1;
   size = puzzle.layout.length;
+}
+
+function determineResult(puzzle) {
+  result = 0;
+  for (let i = 0; i < puzzle.layout.length; i += 1) {
+    result = puzzle.layout[i].reduce((acc, item) => {
+      return acc + item;
+    }, result);
+  }
 }
 
 function clearGameField() {
@@ -190,3 +201,35 @@ function fillColumnClue(puzzle) {
     }
   }
 }
+
+function markCell(event) {
+  const cell = event.target;
+  if (
+    cell.classList.contains('left-clue') ||
+    cell.classList.contains('top-clue')
+  ) {
+    return;
+  }
+  if (cell.classList.contains('cell')) {
+    cell.classList.toggle('mark');
+  }
+}
+
+function checkSolution() {
+  let currentSolution = 0;
+  for (const cell of GAME.children) {
+    if (cell.classList.contains('valid') && cell.classList.contains('mark')) {
+      currentSolution += 1;
+    }
+    if (cell.classList.contains('mark') && !cell.classList.contains('valid')) {
+      currentSolution -= 1;
+    }
+  }
+  if (currentSolution === result && result) {
+    console.log('CONGRATULATIONS! YOU WIN!');
+    // clearGameField();
+  }
+}
+
+GAME.addEventListener('click', markCell);
+GAME.addEventListener('click', checkSolution);
