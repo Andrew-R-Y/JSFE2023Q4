@@ -92,15 +92,16 @@
 }
 
 .game {
-  min-width: 400px;
+  min-width: 480px;
   max-width: 600px;
-  min-height: 400px;
+  min-height: 480px;
+  max-height: 600px;
   padding: 0;
   display: grid;
   background-color: aquamarine;
   border-radius: 20px;
-  grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto repeat(5, 70px);
+  grid-template-rows: auto repeat(5, 70px);
 }
 
 .cell {
@@ -111,6 +112,11 @@
   min-width: 30px;
   min-height: 30px;
   border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 5px;
 }
 
 .left-clue {
@@ -119,7 +125,7 @@
   border-right: 2px solid black;
   display: flex;
   justify-content: end;
-  gap: 10px;
+  gap: 5px;
 }
 
 .clue {

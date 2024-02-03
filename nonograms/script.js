@@ -70,6 +70,7 @@ data.push(n1, n2, n3, n4, n5);
 let puzzleName = '';
 let puzzle;
 let size = 0;
+let fieldSize = 0;
 
 const BUTTONS = document.querySelectorAll('.button');
 const GAME = document.querySelector('.game');
@@ -93,6 +94,7 @@ function choosePuzzle(event) {
   clearGameField();
   fillGameField(puzzle);
   fillLineClue(puzzle);
+  fillColumnClue(puzzle);
 }
 
 for (const button of BUTTONS) {
@@ -100,7 +102,8 @@ for (const button of BUTTONS) {
 }
 
 function determineSize(puzzle) {
-  size = puzzle.layout.length + 1;
+  fieldSize = puzzle.layout.length + 1;
+  size = puzzle.layout.length;
 }
 
 function clearGameField() {
@@ -110,8 +113,8 @@ function clearGameField() {
 }
 
 function fillGameField(puzzle) {
-  for (let i = 0; i < size; i += 1) {
-    for (let j = 0; j < size; j += 1) {
+  for (let i = 0; i < fieldSize; i += 1) {
+    for (let j = 0; j < fieldSize; j += 1) {
       const cell = document.createElement('span');
       if (i === 0) {
         cell.classList.add('top-clue');
@@ -131,34 +134,59 @@ function fillGameField(puzzle) {
 }
 
 function fillLineClue(puzzle) {
-  let cellNumber = 0;
   for (let i = 0; i < size; i += 1) {
     const lineClueArr = [];
     let lineClue = 0;
 
     for (let j = 0; j < size; j += 1) {
-      if (i !== 0 && j !== 0) {
-        if (puzzle.layout[i - 1][j - 1] === 1) {
-          lineClue += 1;
-          if (j === size - 1) {
-            lineClueArr.push(lineClue);
-          }
-        } else if (lineClue !== 0) {
+      if (puzzle.layout[i][j] === 1) {
+        lineClue += 1;
+        if (j === size - 1) {
           lineClueArr.push(lineClue);
-          lineClue = 0;
         }
+      } else if (lineClue !== 0) {
+        lineClueArr.push(lineClue);
+        lineClue = 0;
       }
-      if (i !== 0 && j === size - 1) {
+      if (j === size - 1) {
         if (lineClueArr.length) {
           lineClueArr.forEach((item) => {
             const clue = document.createElement('span');
             clue.classList.add('clue');
             clue.textContent = item;
-            GAME.children[i * size].append(clue);
+            GAME.children[(i + 1) * fieldSize].append(clue);
           });
         }
       }
-      cellNumber += 1;
+    }
+  }
+}
+
+function fillColumnClue(puzzle) {
+  for (let i = 0; i < size; i += 1) {
+    const columnClueArr = [];
+    let columnClue = 0;
+
+    for (let j = 0; j < size; j += 1) {
+      if (puzzle.layout[j][i] === 1) {
+        columnClue += 1;
+        if (j === size - 1) {
+          columnClueArr.push(columnClue);
+        }
+      } else if (columnClue !== 0) {
+        columnClueArr.push(columnClue);
+        columnClue = 0;
+      }
+      if (j === size - 1) {
+        if (columnClueArr.length) {
+          columnClueArr.forEach((item) => {
+            const clue = document.createElement('span');
+            clue.classList.add('clue');
+            clue.textContent = item;
+            GAME.children[i + 1].append(clue);
+          });
+        }
+      }
     }
   }
 }
