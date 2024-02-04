@@ -125,8 +125,8 @@
 }
 
 .top-clue {
-  min-width: 30px;
-  min-height: 30px;
+  min-width: 50px;
+  min-height: 50px;
   border-bottom: 2px solid black;
   display: flex;
   flex-direction: column;
@@ -136,8 +136,8 @@
 }
 
 .left-clue {
-  min-width: 30px;
-  min-height: 30px;
+  min-width: 50px;
+  min-height: 50px;
   border-right: 2px solid black;
   display: flex;
   justify-content: end;
@@ -153,6 +153,11 @@
 }
 
 .valid {
+}
+
+.solution {
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .mark {

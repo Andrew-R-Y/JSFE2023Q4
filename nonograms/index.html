@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./img/sharp.svg" sizes="any" type="image/svg+xml" />
     <script src="./script.js" defer></script>
     <title>Nonograms</title>
   </head>
@@ -17,7 +18,7 @@
           <div class="difficulty-section">
             <div class="button button-level">easy (5 x 5)</div>
             <div class="button button-level">medium (10 x 10)</div>
-            <div class="button button-level">insane (15 x 15)</div>
+            <div class="button button-level">hard (15 x 15)</div>
           </div>
           <h2 class="subheading">Select nonogram</h2>
           <div class="button-section">
@@ -34,7 +35,7 @@
           <div class="button-section">
             <div class="button button-options">Reset game</div>
             <div class="button button-options">Random game</div>
-            <div class="button button-options">Show solution</div>
+            <div class="button button-options" id="solution">Show solution</div>
             <div class="button button-options" title="not implemented">
               Save result
             </div>

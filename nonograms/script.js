@@ -81,6 +81,7 @@ const POPUP_RESULT = document.querySelector('.popup__result');
 const POPUP_ANSWER = document.querySelector('.popup__answer');
 const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
 const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
+const SHOW_SOLUTION_BTN = document.getElementById('solution');
 
 const CLICK_SOUND = document.getElementById('click-sound');
 const RIGHT_CLICK_SOUND = document.getElementById('right-click-sound');
@@ -135,7 +136,7 @@ function clearGameField() {
   }
 }
 
-function fillGameField(puzzle) {
+function fillGameField(puzzle, className = 'valid') {
   for (let i = 0; i < fieldSize; i += 1) {
     for (let j = 0; j < fieldSize; j += 1) {
       const cell = document.createElement('span');
@@ -148,7 +149,7 @@ function fillGameField(puzzle) {
       if (i !== 0 && j !== 0) {
         cell.classList.add('cell');
         if (puzzle.layout[i - 1][j - 1] === 1) {
-          cell.classList.add('valid');
+          cell.classList.add(className);
         }
       }
       GAME.append(cell);
@@ -288,6 +289,14 @@ function closePopup() {
   WIN_SOUND.currentTime = 0;
 }
 
+function showSolution() {
+  clearGameField();
+  fillGameField(puzzle, 'solution');
+  fillLineClue(puzzle);
+  fillColumnClue(puzzle);
+  isGamePaused = true;
+}
+
 GAME.addEventListener('click', markCell);
 GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
@@ -295,3 +304,4 @@ GAME.addEventListener('contextmenu', checkSolution);
 
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', playAgain);
+SHOW_SOLUTION_BTN.addEventListener('click', showSolution);
