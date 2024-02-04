@@ -81,6 +81,10 @@ const POPUP_ANSWER = document.querySelector('.popup__answer');
 const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
 const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 
+const CLICK_SOUND = document.querySelector('#click-sound');
+const RIGHT_CLICK_SOUND = document.querySelector('#right-click-sound');
+const WIN_SOUND = document.querySelector('#win-sound');
+
 for (let i = 0; i < BUTTONS.length; i += 1) {
   BUTTONS[i].textContent = data[i].name;
 }
@@ -218,6 +222,9 @@ function markCell(event) {
   }
   if (cell.classList.contains('cell')) {
     cell.classList.toggle('mark');
+    CLICK_SOUND.pause();
+    CLICK_SOUND.currentTime = 0;
+    CLICK_SOUND.play();
   }
 }
 
@@ -230,7 +237,11 @@ function emptyCell(event) {
     return;
   }
   cell.classList.remove('mark');
-  cell.classList.add('empty-cell');
+  cell.classList.toggle('empty-cell');
+  CLICK_SOUND.pause();
+  RIGHT_CLICK_SOUND.pause();
+  RIGHT_CLICK_SOUND.currentTime = 0;
+  RIGHT_CLICK_SOUND.play();
   event.preventDefault();
 }
 
@@ -246,21 +257,28 @@ function checkSolution() {
   }
   if (currentSolution === result && result) {
     POPUP_WINDOW.classList.add('open');
+    CLICK_SOUND.pause();
+    WIN_SOUND.play();
   }
 }
 
 function playAgain() {
   clearGameField();
   POPUP_WINDOW.classList.remove('open');
+  WIN_SOUND.pause();
+  WIN_SOUND.currentTime = 0;
 }
 
 function closePopup() {
   POPUP_WINDOW.classList.remove('open');
+  WIN_SOUND.pause();
+  WIN_SOUND.currentTime = 0;
 }
 
 GAME.addEventListener('click', markCell);
 GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
+GAME.addEventListener('contextmenu', checkSolution);
 
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', playAgain);
