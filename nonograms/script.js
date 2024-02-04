@@ -82,7 +82,10 @@ const POPUP_ANSWER = document.querySelector('.popup__answer');
 const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
 const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 const SHOW_SOLUTION_BTN = document.getElementById('solution');
+const RESET_BTN = document.getElementById('reset');
+const RANDOM_BTN = document.getElementById('random');
 
+const GO_SOUND = document.getElementById('go-sound');
 const CLICK_SOUND = document.getElementById('click-sound');
 const RIGHT_CLICK_SOUND = document.getElementById('right-click-sound');
 const WIN_SOUND = document.getElementById('win-sound');
@@ -110,6 +113,9 @@ function choosePuzzle(event) {
   fillColumnClue(puzzle);
   determineResult(puzzle);
   isGamePaused = false;
+  GO_SOUND.pause();
+  GO_SOUND.currentTime = 0;
+  GO_SOUND.play();
 }
 
 for (const button of BUTTONS) {
@@ -297,6 +303,16 @@ function showSolution() {
   isGamePaused = true;
 }
 
+function resetField() {
+  if (puzzle) {
+    clearGameField();
+    fillGameField(puzzle);
+    fillLineClue(puzzle);
+    fillColumnClue(puzzle);
+    isGamePaused = false;
+  }
+}
+
 GAME.addEventListener('click', markCell);
 GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
@@ -305,3 +321,4 @@ GAME.addEventListener('contextmenu', checkSolution);
 POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', playAgain);
 SHOW_SOLUTION_BTN.addEventListener('click', showSolution);
+RESET_BTN.addEventListener('click', resetField);
