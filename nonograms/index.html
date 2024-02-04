@@ -14,22 +14,22 @@
       <div class="game-wrapper">
         <h1 class="main-heading">Nonograms</h1>
         <div class="menu">
-          <h2 class="subheading">Choose diffictulty</h2>
+          <h2 class="subheading">Choose your size</h2>
           <div class="difficulty-section">
-            <div class="button button-level">easy (5 x 5)</div>
-            <div class="button button-level">medium (10 x 10)</div>
-            <div class="button button-level">hard (15 x 15)</div>
+            <div class="button button-level small">small (5 x 5)</div>
+            <div class="button button-level medium">medium (10 x 10)</div>
+            <div class="button button-level large">large (15 x 15)</div>
           </div>
           <h2 class="subheading">Select nonogram</h2>
-          <div class="button-section">
-            <div class="button button-select"></div>
-            <div class="button button-select"></div>
-            <div class="button button-select"></div>
-            <div class="button button-select"></div>
-            <div class="button button-select"></div>
+          <div class="button-section" id="select-game">
+            <div class="button button-game-select"></div>
+            <div class="button button-game-select"></div>
+            <div class="button button-game-select"></div>
+            <div class="button button-game-select"></div>
+            <div class="button button-game-select"></div>
           </div>
         </div>
-        <div class="game"></div>
+        <div class="game grid-small"></div>
         <div class="menu">
           <h2 class="subheading">Select option</h2>
           <div class="button-section">
@@ -37,10 +37,10 @@
             <div class="button button-options" id="random">Random game</div>
             <div class="button button-options" id="solution">Show solution</div>
             <div class="button button-options" title="not implemented">
-              Save result
+              Save game
             </div>
             <div class="button button-options" title="not implemented">
-              Display results
+              Load game
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-    <audio id="go-sound" src="./sounds/go-go-go.mp3"></audio>
+    <audio id="go-sound" src="./sounds/lets-go.mp3"></audio>
     <audio id="win-sound" src="./sounds/enemy-down.mp3"></audio>
     <audio id="click-sound" src="./sounds/pop.wav"></audio>
     <audio id="right-click-sound" src="./sounds/right-click-sound.mp3"></audio>

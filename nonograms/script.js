@@ -1,6 +1,8 @@
-const data = [];
+const small = [];
+const medium = [];
+const large = [];
 
-const n1 = {
+const s1 = {
   name: 'snake',
   layout: [
     [1, 1, 1, 1, 1],
@@ -11,7 +13,7 @@ const n1 = {
   ],
 };
 
-const n2 = {
+const s2 = {
   name: 'sharp',
   layout: [
     [0, 1, 0, 1, 0],
@@ -22,7 +24,7 @@ const n2 = {
   ],
 };
 
-const n3 = {
+const s3 = {
   name: 'shuriken',
   layout: [
     [1, 0, 0, 1, 1],
@@ -33,7 +35,7 @@ const n3 = {
   ],
 };
 
-const n4 = {
+const s4 = {
   name: 'car',
   layout: [
     [0, 0, 0, 0, 0],
@@ -44,7 +46,7 @@ const n4 = {
   ],
 };
 
-const n5 = {
+const s5 = {
   name: 'airplane',
   layout: [
     [0, 0, 1, 0, 0],
@@ -55,18 +57,197 @@ const n5 = {
   ],
 };
 
-const n6 = {
-  name: 'empty',
+const m1 = {
+  name: 'postcard',
   layout: [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ],
 };
 
-data.push(n1, n2, n3, n4, n5);
+const m2 = {
+  name: 'leaf',
+  layout: [
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 1, 1, 0, 1, 0, 1, 1, 0],
+    [0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 1, 1, 1, 1, 0],
+    [0, 1, 0, 1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 0, 0, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+};
+
+const m3 = {
+  name: 'cherries',
+  layout: [
+    [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+    [1, 1, 1, 0, 0, 1, 0, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [0, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+    [0, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [0, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+  ],
+};
+
+const m4 = {
+  name: 'music',
+  layout: [
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [0, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+    [0, 0, 0, 1, 0, 0, 0, 1, 1, 1],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 1],
+    [0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 1, 0, 0, 0, 1, 1, 1],
+    [0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 0, 1, 1, 0],
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+  ],
+};
+
+const m5 = {
+  name: 'mouse',
+  layout: [
+    [0, 0, 1, 1, 0, 0, 0, 1, 1, 0],
+    [0, 1, 0, 0, 1, 0, 1, 0, 0, 1],
+    [0, 1, 0, 1, 1, 1, 1, 1, 0, 1],
+    [0, 0, 1, 1, 0, 1, 0, 1, 1, 0],
+    [0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 0, 1, 1, 1, 0],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  ],
+};
+
+const l1 = {
+  name: 'duck',
+  layout: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+  ],
+};
+
+const l2 = {
+  name: 'deer',
+  layout: [
+    [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+    [1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+    [0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+    [0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+    [0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+    [0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+  ],
+};
+
+const l3 = {
+  name: 'dolphin',
+  layout: [
+    [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1],
+    [1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0],
+    [0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0],
+    [1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1],
+  ],
+};
+
+const l4 = {
+  name: 'clover',
+  layout: [
+    [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+};
+
+const l5 = {
+  name: 'cat',
+  layout: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0],
+    [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1],
+    [0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  ],
+};
+
+small.push(s2, s2, s3, s4, s5);
+medium.push(m1, m2, m3, m4, m5);
+large.push(l1, l2, l3, l4, l5);
+
+let data = small;
+let level = 'small';
 let puzzleName = '';
 let puzzle;
 let size = 0;
@@ -74,7 +255,8 @@ let fieldSize = 0;
 let result = 0;
 let isGamePaused = true;
 
-const BUTTONS = document.querySelectorAll('.button-select');
+const BUTTONS_GAME_SIZE = document.querySelectorAll('.button-level');
+let buttons = document.querySelectorAll('.button-game-select');
 const GAME = document.querySelector('.game');
 const POPUP_WINDOW = document.querySelector('.popup');
 const POPUP_RESULT = document.querySelector('.popup__result');
@@ -84,21 +266,22 @@ const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 const SHOW_SOLUTION_BTN = document.getElementById('solution');
 const RESET_BTN = document.getElementById('reset');
 const RANDOM_BTN = document.getElementById('random');
+const SELECT_GAME_SECTION = document.getElementById('select-game');
 
 const GO_SOUND = document.getElementById('go-sound');
 const CLICK_SOUND = document.getElementById('click-sound');
 const RIGHT_CLICK_SOUND = document.getElementById('right-click-sound');
 const WIN_SOUND = document.getElementById('win-sound');
 
-for (let i = 0; i < BUTTONS.length; i += 1) {
-  BUTTONS[i].textContent = data[i].name;
+for (let i = 0; i < buttons.length; i += 1) {
+  buttons[i].textContent = data[i].name;
 }
 
 function choosePuzzle(event) {
   if (event.currentTarget.classList.contains('active')) {
     return;
   }
-  for (const button of BUTTONS) {
+  for (const button of buttons) {
     button.classList.remove('active');
   }
   this.classList.add('active');
@@ -118,7 +301,68 @@ function choosePuzzle(event) {
   GO_SOUND.play();
 }
 
-for (const button of BUTTONS) {
+function clearSelectGameSection() {
+  while (SELECT_GAME_SECTION.firstChild) {
+    SELECT_GAME_SECTION.firstChild.remove();
+  }
+}
+
+function selectGame(event) {
+  const btn = event.target;
+  if (btn.classList.contains('active')) {
+    return;
+  }
+  clearGameField();
+  for (const button of BUTTONS_GAME_SIZE) {
+    button.classList.remove('active');
+  }
+  if (btn.classList.contains('small')) {
+    level = 'small';
+    GAME.classList.add('grid-small');
+    GAME.classList.remove('grid-medium');
+    GAME.classList.remove('grid-large');
+    btn.classList.add('active');
+    data = small;
+  }
+  if (btn.classList.contains('medium')) {
+    level = 'medium';
+    GAME.classList.add('grid-medium');
+    GAME.classList.remove('grid-small');
+    GAME.classList.remove('grid-large');
+    btn.classList.add('active');
+    data = medium;
+  }
+  if (btn.classList.contains('large')) {
+    level = 'large';
+    GAME.classList.add('grid-large');
+    GAME.classList.remove('grid-small');
+    GAME.classList.remove('grid-medium');
+    btn.classList.add('active');
+    data = large;
+  }
+  clearSelectGameSection();
+  createGamesButtons(data);
+}
+
+function createGamesButtons(data) {
+  for (let i = 0; i < data.length; i += 1) {
+    const button = document.createElement('div');
+    button.classList.add('button');
+    button.classList.add('button-game-select');
+    button.textContent = data[i].name;
+    SELECT_GAME_SECTION.append(button);
+  }
+  buttons = document.querySelectorAll('.button-game-select');
+  for (const button of buttons) {
+    button.addEventListener('click', choosePuzzle);
+  }
+}
+
+for (const button of BUTTONS_GAME_SIZE) {
+  button.addEventListener('click', selectGame);
+}
+
+for (const button of buttons) {
   button.addEventListener('click', choosePuzzle);
 }
 

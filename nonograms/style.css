@@ -90,12 +90,12 @@
   transition: all 0.7s;
 }
 
-.button-select:hover,
+.button-game-select:hover,
 .button-level:hover {
   border-color: red;
 }
 
-.button-select.active,
+.button-game-select.active,
 .button-level.active {
   cursor: auto;
   background-color: lightgreen;
@@ -119,20 +119,48 @@
   user-select: none;
 }
 
+.grid-small {
+  grid-template-columns: auto repeat(5, 50px);
+  grid-template-rows: auto repeat(5, 50px);
+}
+
+.grid-medium {
+  grid-template-columns: auto repeat(10, 30px);
+  grid-template-rows: auto repeat(10, 30px);
+}
+
+.grid-large {
+  grid-template-columns: auto repeat(15, 20px);
+  grid-template-rows: auto repeat(15, 20px);
+}
+
 .cell {
   background-color: #ffffff;
   border: 1px solid var(--border-dark);
 }
 
 .top-clue {
-  min-width: 50px;
-  min-height: 50px;
   border-bottom: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
   gap: 5px;
+}
+
+.grid-small .top-clue {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.grid-medium .top-clue {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.grid-large .top-clue {
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .left-clue {
@@ -144,12 +172,42 @@
   gap: 5px;
 }
 
+.grid-small .left-clue {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.grid-medium .left-clue {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.grid-large .left-clue {
+  min-width: 20px;
+  min-height: 20px;
+}
+
 .clue {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   padding: 5px;
+}
+
+.grid-small .clue {
+  font-size: 20px;
+  padding: 5px;
+}
+
+.grid-medium .clue {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.grid-large .clue {
+  font-size: 14px;
+  padding: 2px;
 }
 
 .valid {
