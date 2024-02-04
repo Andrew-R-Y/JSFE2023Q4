@@ -242,10 +242,11 @@ const l5 = {
   ],
 };
 
-small.push(s2, s2, s3, s4, s5);
+small.push(s1, s2, s3, s4, s5);
 medium.push(m1, m2, m3, m4, m5);
 large.push(l1, l2, l3, l4, l5);
 
+const sizesArr = [small, medium, large];
 let data = small;
 let level = 'small';
 let puzzleName = '';
@@ -266,6 +267,7 @@ const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 const SHOW_SOLUTION_BTN = document.getElementById('solution');
 const RESET_BTN = document.getElementById('reset');
 const RANDOM_BTN = document.getElementById('random');
+const MUTE_BTN = document.getElementById('mute');
 const SELECT_GAME_SECTION = document.getElementById('select-game');
 
 const GO_SOUND = document.getElementById('go-sound');
@@ -298,7 +300,9 @@ function choosePuzzle(event) {
   isGamePaused = false;
   GO_SOUND.pause();
   GO_SOUND.currentTime = 0;
-  GO_SOUND.play();
+  if (!MUTE_BTN.classList.contains('active')) {
+    GO_SOUND.play();
+  }
 }
 
 function clearSelectGameSection() {
@@ -313,6 +317,7 @@ function selectGame(event) {
     return;
   }
   clearGameField();
+  puzzle = '';
   for (const button of BUTTONS_GAME_SIZE) {
     button.classList.remove('active');
   }
@@ -480,7 +485,9 @@ function markCell(event) {
     cell.classList.toggle('mark');
     CLICK_SOUND.pause();
     CLICK_SOUND.currentTime = 0;
-    CLICK_SOUND.play();
+    if (!MUTE_BTN.classList.contains('active')) {
+      CLICK_SOUND.play();
+    }
   }
 }
 
@@ -500,7 +507,9 @@ function emptyCell(event) {
   CLICK_SOUND.pause();
   RIGHT_CLICK_SOUND.pause();
   RIGHT_CLICK_SOUND.currentTime = 0;
-  RIGHT_CLICK_SOUND.play();
+  if (!MUTE_BTN.classList.contains('active')) {
+    RIGHT_CLICK_SOUND.play();
+  }
   event.preventDefault();
 }
 
@@ -520,7 +529,9 @@ function checkSolution() {
   if (currentSolution === result && result) {
     POPUP_WINDOW.classList.add('open');
     CLICK_SOUND.pause();
-    WIN_SOUND.play();
+    if (!MUTE_BTN.classList.contains('active')) {
+      WIN_SOUND.play();
+    }
     isGamePaused = true;
   }
 }
@@ -540,6 +551,9 @@ function closePopup() {
 }
 
 function showSolution() {
+  if (!puzzle) {
+    return;
+  }
   clearGameField();
   fillGameField(puzzle, 'solution');
   fillLineClue(puzzle);
@@ -557,6 +571,49 @@ function resetField() {
   }
 }
 
+function mute() {
+  MUTE_BTN.classList.toggle('active');
+}
+
+function randomGame() {
+  clearSelectGameSection();
+  clearGameField();
+  for (const button of BUTTONS_GAME_SIZE) {
+    button.classList.remove('active');
+  }
+  const randomSizeNumber = Math.floor(Math.random() * 3);
+  data = sizesArr[randomSizeNumber];
+  GAME.className = 'game';
+  switch (randomSizeNumber) {
+    case 0:
+      GAME.classList.add('grid-small');
+      break;
+    case 1:
+      GAME.classList.add('grid-medium');
+      break;
+    case 2:
+      GAME.classList.add('grid-large');
+      break;
+  }
+  BUTTONS_GAME_SIZE[randomSizeNumber].classList.add('active');
+  createGamesButtons(data);
+  const randomGameNumber = Math.floor(Math.random() * data.length);
+  puzzle = data[randomGameNumber];
+  buttons[randomGameNumber].classList.add('active');
+  determineSize(puzzle);
+  clearGameField();
+  fillGameField(puzzle);
+  fillLineClue(puzzle);
+  fillColumnClue(puzzle);
+  determineResult(puzzle);
+  isGamePaused = false;
+  GO_SOUND.pause();
+  GO_SOUND.currentTime = 0;
+  if (!MUTE_BTN.classList.contains('active')) {
+    GO_SOUND.play();
+  }
+}
+
 GAME.addEventListener('click', markCell);
 GAME.addEventListener('contextmenu', emptyCell);
 GAME.addEventListener('click', checkSolution);
@@ -566,3 +623,5 @@ POPUP_CLOSE_BTN.addEventListener('click', closePopup);
 POPUP_PLAY_BTN.addEventListener('click', playAgain);
 SHOW_SOLUTION_BTN.addEventListener('click', showSolution);
 RESET_BTN.addEventListener('click', resetField);
+MUTE_BTN.addEventListener('click', mute);
+RANDOM_BTN.addEventListener('click', randomGame);

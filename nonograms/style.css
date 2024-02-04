@@ -111,6 +111,11 @@
   border-color: lightgreen;
 }
 
+.button-options.active {
+  background-color: lightgreen;
+  border-color: lightgreen;
+}
+
 .game {
   max-width: 600px;
   max-height: 600px;
