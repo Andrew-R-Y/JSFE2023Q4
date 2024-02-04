@@ -498,7 +498,8 @@ function emptyCell(event) {
   const cell = event.target;
   if (
     cell.classList.contains('left-clue') ||
-    cell.classList.contains('top-clue')
+    cell.classList.contains('top-clue') ||
+    cell.classList.contains('clue')
   ) {
     return;
   }
