@@ -72,8 +72,9 @@ let puzzle;
 let size = 0;
 let fieldSize = 0;
 let result = 0;
+let isGamePaused = true;
 
-const BUTTONS = document.querySelectorAll('.button');
+const BUTTONS = document.querySelectorAll('.button-select');
 const GAME = document.querySelector('.game');
 const POPUP_WINDOW = document.querySelector('.popup');
 const POPUP_RESULT = document.querySelector('.popup__result');
@@ -81,9 +82,9 @@ const POPUP_ANSWER = document.querySelector('.popup__answer');
 const POPUP_CLOSE_BTN = document.querySelector('.popup__button-close');
 const POPUP_PLAY_BTN = document.querySelector('.popup__button-play');
 
-const CLICK_SOUND = document.querySelector('#click-sound');
-const RIGHT_CLICK_SOUND = document.querySelector('#right-click-sound');
-const WIN_SOUND = document.querySelector('#win-sound');
+const CLICK_SOUND = document.getElementById('click-sound');
+const RIGHT_CLICK_SOUND = document.getElementById('right-click-sound');
+const WIN_SOUND = document.getElementById('win-sound');
 
 for (let i = 0; i < BUTTONS.length; i += 1) {
   BUTTONS[i].textContent = data[i].name;
@@ -107,6 +108,7 @@ function choosePuzzle(event) {
   fillLineClue(puzzle);
   fillColumnClue(puzzle);
   determineResult(puzzle);
+  isGamePaused = false;
 }
 
 for (const button of BUTTONS) {
@@ -213,6 +215,9 @@ function fillColumnClue(puzzle) {
 }
 
 function markCell(event) {
+  if (isGamePaused) {
+    return;
+  }
   const cell = event.target;
   if (
     cell.classList.contains('left-clue') ||
@@ -229,6 +234,9 @@ function markCell(event) {
 }
 
 function emptyCell(event) {
+  if (isGamePaused) {
+    return;
+  }
   const cell = event.target;
   if (
     cell.classList.contains('left-clue') ||
@@ -246,6 +254,9 @@ function emptyCell(event) {
 }
 
 function checkSolution() {
+  if (isGamePaused) {
+    return;
+  }
   let currentSolution = 0;
   for (const cell of GAME.children) {
     if (cell.classList.contains('valid') && cell.classList.contains('mark')) {
@@ -259,6 +270,7 @@ function checkSolution() {
     POPUP_WINDOW.classList.add('open');
     CLICK_SOUND.pause();
     WIN_SOUND.play();
+    isGamePaused = true;
   }
 }
 
@@ -267,6 +279,7 @@ function playAgain() {
   POPUP_WINDOW.classList.remove('open');
   WIN_SOUND.pause();
   WIN_SOUND.currentTime = 0;
+  isGamePaused = false;
 }
 
 function closePopup() {
