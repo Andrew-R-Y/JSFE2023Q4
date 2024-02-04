@@ -69,6 +69,10 @@
   max-width: 600px;
 }
 
+.button-section {
+  max-width: 480px;
+}
+
 .difficulty-section {
   margin-bottom: 15px;
 }
