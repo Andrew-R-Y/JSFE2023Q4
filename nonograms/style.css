@@ -5,6 +5,7 @@
 :root {
   --background-body: #f5f5dc;
   --background-container: #665f55;
+  --background-secondary: #add8e6;
   --text-dark: #403f3d;
   --text-light: #e1d4c9;
   --border-dark: #665f55;
@@ -17,7 +18,7 @@
   justify-content: center;
   align-items: flex-start;
   background-color: var(--background-body);
-  padding: 20px;
+  padding: 10px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -32,10 +33,11 @@
 }
 
 .main-heading {
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  font-size: 24px;
 }
 
 .subheading {
@@ -43,6 +45,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 0 10px;
+  font-size: 20px;
 }
 
 .menu,
@@ -52,16 +55,22 @@
 }
 
 .menu {
-  background-color: lightblue;
+  background-color: var(--background-secondary);
   border-radius: 20px;
   user-select: none;
 }
 
-.button-section {
+.button-section,
+.difficulty-section {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 20px 10px;
+  max-width: 600px;
+}
+
+.difficulty-section {
+  margin-bottom: 15px;
 }
 
 .button {
@@ -69,7 +78,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   min-height: 30px;
   min-width: 70px;
@@ -81,27 +90,32 @@
   transition: all 0.7s;
 }
 
-.button:hover {
+.button-select:hover,
+.button-level:hover {
   border-color: red;
 }
 
-.button.active {
+.button-select.active,
+.button-level.active {
   cursor: auto;
   background-color: lightgreen;
   border-color: lightgreen;
 }
 
+.button-options:hover {
+  background-color: lightgreen;
+  border-color: lightgreen;
+}
+
 .game {
-  min-width: 480px;
   max-width: 600px;
-  min-height: 480px;
   max-height: 600px;
-  padding: 0;
+  padding: 10px;
   display: grid;
-  background-color: aquamarine;
+  background-color: var(--background-secondary);
   border-radius: 20px;
-  grid-template-columns: auto repeat(5, 70px);
-  grid-template-rows: auto repeat(5, 70px);
+  grid-template-columns: auto repeat(5, 50px);
+  grid-template-rows: auto repeat(5, 50px);
   user-select: none;
 }
 
@@ -201,7 +215,7 @@
 
 .popup__result {
   font-weight: 700;
-  font-size: 30px;
+  font-size: 24px;
   text-align: center;
 }
 

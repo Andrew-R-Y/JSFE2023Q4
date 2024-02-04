@@ -13,23 +13,48 @@
       <div class="game-wrapper">
         <h1 class="main-heading">Nonograms</h1>
         <div class="menu">
-          <h2 class="subheading">Choose nonogram</h2>
+          <h2 class="subheading">Choose diffictulty</h2>
+          <div class="difficulty-section">
+            <div class="button button-level">easy (5 x 5)</div>
+            <div class="button button-level">medium (10 x 10)</div>
+            <div class="button button-level">insane (15 x 15)</div>
+          </div>
+          <h2 class="subheading">Select nonogram</h2>
           <div class="button-section">
-            <div class="button"></div>
-            <div class="button"></div>
-            <div class="button"></div>
-            <div class="button"></div>
-            <div class="button"></div>
+            <div class="button button-select"></div>
+            <div class="button button-select"></div>
+            <div class="button button-select"></div>
+            <div class="button button-select"></div>
+            <div class="button button-select"></div>
           </div>
         </div>
         <div class="game"></div>
+        <div class="menu">
+          <h2 class="subheading">Select option</h2>
+          <div class="button-section">
+            <div class="button button-options">Reset game</div>
+            <div class="button button-options">Random game</div>
+            <div class="button button-options">Show solution</div>
+            <div class="button button-options" title="not implemented">
+              Save result
+            </div>
+            <div class="button button-options" title="not implemented">
+              Display results
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="popup">
       <div class="popup__body">
         <div class="popup__content">
-          <div class="popup__result">YOU WIN!</div>
-          <div class="popup__answer">Great result!</div>
+          <div class="popup__result">
+            Great! You have solved the nonogram in
+            <span id="seconds">00:00</span> seconds!
+          </div>
+          <div class="popup__answer">
+            I wish you good luck in further training!
+          </div>
           <div class="popup__buttons">
             <button class="popup__button popup__button-play">
               <span>play</span>
