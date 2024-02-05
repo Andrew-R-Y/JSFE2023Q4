@@ -1,3 +1,225 @@
+// create DOM start
+// create game page start
+const pageWrapper = document.createElement('div');
+pageWrapper.classList.add('page-wrapper');
+
+const gameWrapper = document.createElement('div');
+gameWrapper.classList.add('game-wrapper');
+
+const mainHeading = document.createElement('h1');
+mainHeading.classList.add('main-heading');
+mainHeading.textContent = 'Nonograms';
+
+const menu = document.createElement('div');
+menu.classList.add('menu');
+
+const chooseSize = document.createElement('h2');
+chooseSize.classList.add('subheading');
+chooseSize.textContent = 'Choose your size';
+
+const difficultySection = document.createElement('div');
+difficultySection.classList.add('difficulty-section');
+
+const btnSmall = document.createElement('div');
+btnSmall.classList.add('button');
+btnSmall.classList.add('button-level');
+btnSmall.classList.add('small');
+btnSmall.classList.add('active');
+btnSmall.textContent = 'small (5 x 5)';
+
+const btnMedium = document.createElement('div');
+btnMedium.classList.add('button');
+btnMedium.classList.add('button-level');
+btnMedium.classList.add('medium');
+btnMedium.textContent = 'medium (10 x 10)';
+
+const btnLarge = document.createElement('div');
+btnLarge.classList.add('button');
+btnLarge.classList.add('button-level');
+btnLarge.classList.add('large');
+btnLarge.textContent = 'large (15 x 15)';
+
+const selectNonogram = document.createElement('h2');
+selectNonogram.classList.add('subheading');
+selectNonogram.textContent = 'Select nonogram';
+
+const buttonSection = document.createElement('div');
+buttonSection.classList.add('button-section');
+buttonSection.setAttribute('id', 'select-game');
+
+difficultySection.append(btnSmall);
+difficultySection.append(btnMedium);
+difficultySection.append(btnLarge);
+
+const timePane = document.createElement('div');
+timePane.classList.add('time-pane');
+
+const timeTextSpan = document.createElement('span');
+timeTextSpan.classList.add('time-text');
+timeTextSpan.textContent = 'Time:';
+
+const timeSpan = document.createElement('span');
+timeSpan.classList.add('time');
+timeSpan.textContent = '00:00';
+
+timePane.append(timeTextSpan);
+timePane.append(timeSpan);
+
+const game = document.createElement('div');
+game.classList.add('game');
+game.classList.add('grid-small');
+
+const menuBottom = document.createElement('div');
+menuBottom.classList.add('menu');
+
+const selectOption = document.createElement('h2');
+selectOption.classList.add('subheading');
+selectOption.textContent = 'Select option';
+
+const selectOptionBtnSection = document.createElement('div');
+selectOptionBtnSection.classList.add('button-section');
+
+const btnReset = document.createElement('div');
+btnReset.classList.add('button');
+btnReset.classList.add('button-options');
+btnReset.setAttribute('id', 'reset');
+btnReset.textContent = 'Reset game';
+
+const btnRandom = document.createElement('div');
+btnRandom.classList.add('button');
+btnRandom.classList.add('button-options');
+btnRandom.setAttribute('id', 'random');
+btnRandom.textContent = 'Random game';
+
+const btnSolution = document.createElement('div');
+btnSolution.classList.add('button');
+btnSolution.classList.add('button-options');
+btnSolution.setAttribute('id', 'solution');
+btnSolution.textContent = 'Solution';
+
+const btnSaveGame = document.createElement('div');
+btnSaveGame.classList.add('button');
+btnSaveGame.classList.add('button-options');
+btnSaveGame.setAttribute('title', 'not implemented');
+btnSaveGame.textContent = 'Save game';
+
+const btnContinueGame = document.createElement('div');
+btnContinueGame.classList.add('button');
+btnContinueGame.classList.add('button-options');
+btnContinueGame.setAttribute('title', 'not implemented');
+btnContinueGame.textContent = 'Continue last game';
+
+const btnMute = document.createElement('div');
+btnMute.classList.add('button');
+btnMute.classList.add('button-options');
+btnMute.setAttribute('id', 'mute');
+btnMute.textContent = 'Mute';
+
+selectOptionBtnSection.append(btnReset);
+selectOptionBtnSection.append(btnRandom);
+selectOptionBtnSection.append(btnSolution);
+selectOptionBtnSection.append(btnSaveGame);
+selectOptionBtnSection.append(btnContinueGame);
+selectOptionBtnSection.append(btnMute);
+
+menuBottom.append(selectOption);
+menuBottom.append(selectOptionBtnSection);
+
+menu.append(chooseSize);
+menu.append(difficultySection);
+menu.append(selectNonogram);
+menu.append(buttonSection);
+
+gameWrapper.append(mainHeading);
+gameWrapper.append(menu);
+gameWrapper.append(timePane);
+gameWrapper.append(game);
+gameWrapper.append(menuBottom);
+
+pageWrapper.append(gameWrapper);
+
+document.body.append(pageWrapper);
+// create game page end
+
+// create popup start
+const popup = document.createElement('div');
+popup.classList.add('popup');
+
+const popupBody = document.createElement('div');
+popupBody.classList.add('popup__body');
+
+const popupContent = document.createElement('div');
+popupContent.classList.add('popup__content');
+
+const popupResult = document.createElement('div');
+popupResult.classList.add('popup__result');
+popupResult.textContent = 'Great! You have solved the nonogram in ';
+
+const popupSecondsSpan = document.createElement('span');
+popupSecondsSpan.setAttribute('id', 'popup__seconds');
+
+popupResult.append(popupSecondsSpan);
+
+popupResult.append(' seconds!');
+
+const popupAnswer = document.createElement('div');
+popupAnswer.classList.add('popup__answer');
+popupAnswer.textContent = 'I wish you good luck in further training!';
+
+const popupButtons = document.createElement('div');
+popupButtons.classList.add('popup__buttons');
+
+const playBtn = document.createElement('div');
+playBtn.classList.add('popup__button');
+playBtn.classList.add('popup__button-play');
+const playBtnSpan = document.createElement('span');
+playBtnSpan.textContent = 'play';
+playBtn.append(playBtnSpan);
+
+const closeBtn = document.createElement('div');
+closeBtn.classList.add('popup__button');
+closeBtn.classList.add('popup__button-close');
+const closeBtnSpan = document.createElement('span');
+closeBtnSpan.textContent = 'close';
+closeBtn.append(closeBtnSpan);
+
+popupButtons.append(playBtn);
+popupButtons.append(closeBtn);
+
+popupContent.append(popupResult);
+popupContent.append(popupAnswer);
+popupContent.append(popupButtons);
+
+popupBody.append(popupContent);
+popup.append(popupBody);
+
+document.body.append(popup);
+// create popup end
+
+// create audio start
+const goSound = document.createElement('audio');
+goSound.setAttribute('id', 'go-sound');
+goSound.setAttribute('src', './sounds/lets-go.mp3');
+
+const winSound = document.createElement('audio');
+winSound.setAttribute('id', 'win-sound');
+winSound.setAttribute('src', './sounds/enemy-down.mp3');
+
+const clickSound = document.createElement('audio');
+clickSound.setAttribute('id', 'click-sound');
+clickSound.setAttribute('src', './sounds/pop.wav');
+
+const rightClickSound = document.createElement('audio');
+rightClickSound.setAttribute('id', 'right-click-sound');
+rightClickSound.setAttribute('src', './sounds/right-click-sound.mp3');
+
+document.body.append(goSound);
+document.body.append(winSound);
+document.body.append(clickSound);
+document.body.append(rightClickSound);
+// create audio end
+// create DOM end
+
 const small = [];
 const medium = [];
 const large = [];
@@ -331,6 +553,7 @@ function selectGame(event) {
     GAME.classList.remove('grid-large');
     btn.classList.add('active');
     data = small;
+    randomGame(null, 0, 0);
   }
   if (btn.classList.contains('medium')) {
     level = 'medium';
@@ -339,6 +562,7 @@ function selectGame(event) {
     GAME.classList.remove('grid-large');
     btn.classList.add('active');
     data = medium;
+    randomGame(null, 1, 0);
   }
   if (btn.classList.contains('large')) {
     level = 'large';
@@ -347,9 +571,8 @@ function selectGame(event) {
     GAME.classList.remove('grid-medium');
     btn.classList.add('active');
     data = large;
+    randomGame(null, 2, 0);
   }
-  clearSelectGameSection();
-  createGamesButtons(data);
 }
 
 function createGamesButtons(data) {
@@ -556,6 +779,9 @@ function playAgain() {
   WIN_SOUND.pause();
   WIN_SOUND.currentTime = 0;
   isGamePaused = false;
+  fillGameField(puzzle);
+  fillLineClue(puzzle);
+  fillColumnClue(puzzle);
 }
 
 function closePopup() {
