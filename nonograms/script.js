@@ -255,6 +255,7 @@ let size = 0;
 let fieldSize = 0;
 let result = 0;
 let isGamePaused = true;
+let isFirstGame = true;
 
 const BUTTONS_GAME_SIZE = document.querySelectorAll('.button-level');
 let buttons = document.querySelectorAll('.button-game-select');
@@ -269,6 +270,8 @@ const RESET_BTN = document.getElementById('reset');
 const RANDOM_BTN = document.getElementById('random');
 const MUTE_BTN = document.getElementById('mute');
 const SELECT_GAME_SECTION = document.getElementById('select-game');
+const TIME = document.querySelector('.time');
+const POPUP_SECONDS = document.getElementById('popup__seconds');
 
 const GO_SOUND = document.getElementById('go-sound');
 const CLICK_SOUND = document.getElementById('click-sound');
@@ -482,9 +485,13 @@ function markCell(event) {
     return;
   }
   if (cell.classList.contains('cell')) {
+    cell.classList.remove('empty-cell');
     cell.classList.toggle('mark');
     CLICK_SOUND.pause();
     CLICK_SOUND.currentTime = 0;
+    if (!startTime) {
+      startTimer();
+    }
     if (!MUTE_BTN.classList.contains('active')) {
       CLICK_SOUND.play();
     }
@@ -508,6 +515,9 @@ function emptyCell(event) {
   CLICK_SOUND.pause();
   RIGHT_CLICK_SOUND.pause();
   RIGHT_CLICK_SOUND.currentTime = 0;
+  if (!startTime) {
+    startTimer();
+  }
   if (!MUTE_BTN.classList.contains('active')) {
     RIGHT_CLICK_SOUND.play();
   }
@@ -534,6 +544,9 @@ function checkSolution() {
       WIN_SOUND.play();
     }
     isGamePaused = true;
+    clearInterval(interval);
+    setPopupTime();
+    resetTime();
   }
 }
 
@@ -560,6 +573,8 @@ function showSolution() {
   fillLineClue(puzzle);
   fillColumnClue(puzzle);
   isGamePaused = true;
+  resetTime();
+  clearInterval(interval);
 }
 
 function resetField() {
@@ -569,6 +584,8 @@ function resetField() {
     fillLineClue(puzzle);
     fillColumnClue(puzzle);
     isGamePaused = false;
+    resetTime();
+    clearInterval(interval);
   }
 }
 
@@ -576,13 +593,18 @@ function mute() {
   MUTE_BTN.classList.toggle('active');
 }
 
-function randomGame() {
+function randomGame(event, ...args) {
   clearSelectGameSection();
   clearGameField();
   for (const button of BUTTONS_GAME_SIZE) {
     button.classList.remove('active');
   }
-  const randomSizeNumber = Math.floor(Math.random() * 3);
+  let randomSizeNumber;
+  if (!args.length) {
+    randomSizeNumber = Math.floor(Math.random() * 3);
+  } else {
+    randomSizeNumber = args[0];
+  }
   data = sizesArr[randomSizeNumber];
   GAME.className = 'game';
   switch (randomSizeNumber) {
@@ -598,7 +620,12 @@ function randomGame() {
   }
   BUTTONS_GAME_SIZE[randomSizeNumber].classList.add('active');
   createGamesButtons(data);
-  const randomGameNumber = Math.floor(Math.random() * data.length);
+  let randomGameNumber;
+  if (!args.length) {
+    randomGameNumber = Math.floor(Math.random() * data.length);
+  } else {
+    randomGameNumber = args[1];
+  }
   puzzle = data[randomGameNumber];
   buttons[randomGameNumber].classList.add('active');
   determineSize(puzzle);
@@ -610,9 +637,43 @@ function randomGame() {
   isGamePaused = false;
   GO_SOUND.pause();
   GO_SOUND.currentTime = 0;
-  if (!MUTE_BTN.classList.contains('active')) {
+  if (!MUTE_BTN.classList.contains('active') && !isFirstGame) {
     GO_SOUND.play();
   }
+  isFirstGame = false;
+}
+randomGame(null, 0, 0);
+
+let startTime;
+let currentTime;
+let seconds;
+let minutes;
+let interval;
+
+function resetTime() {
+  startTime = 0;
+  currentTime = 0;
+  seconds = 0;
+  minutes = 0;
+  TIME.textContent = `00:00`;
+}
+
+function startTimer() {
+  startTime = Date.now();
+  interval = setInterval(() => {
+    currentTime = Date.now() - startTime;
+    seconds = Math.floor((currentTime / 1000) % 60);
+    minutes = Math.floor((currentTime / 1000 / 60) % 60);
+    seconds = String(seconds).padStart(2, '0');
+    minutes = String(minutes).padStart(2, '0');
+    const resultTime = `${minutes}:${seconds}`;
+    TIME.textContent = resultTime;
+  }, 1000);
+}
+
+function setPopupTime() {
+  const result = Math.floor((Date.now() - startTime) / 1000);
+  POPUP_SECONDS.textContent = result;
 }
 
 GAME.addEventListener('click', markCell);
@@ -626,3 +687,27 @@ SHOW_SOLUTION_BTN.addEventListener('click', showSolution);
 RESET_BTN.addEventListener('click', resetField);
 MUTE_BTN.addEventListener('click', mute);
 RANDOM_BTN.addEventListener('click', randomGame);
+
+console.log(`Score: 205 / 250
+
+- [x] Basic scope (80/80):
+- [x] layout, design, responsive UI: (20/20);
+- [x] at the beginning state of the game, the frame has size 5x5. The sequence of numbers is logically arranged and help the player solve the nonogram: (20/20);
+- [x] cells and clues are divided by dividers as described in Basic block: (5/5);
+- [x] when user clicks on cells using mouse left-click - it should be mark as dark. When user click on dark cell - it should be mark as empty (white) cell: (15/15);
+- [x] the game should end when the player reveals all black cells correctly and related message is displayed at the end of the game: (20/20);
+
+- [+/-] Andvanced scope (75/90):
+- [x] the game should have at least 5 templates for easy level (5x5) and the player is able to choose what picture he/she wants to solve. (15/15);
+- [x] a player is able to fill in a cell in the grid changing the color of the grid to crossed-cell(X) using right mouse-click. Context menu doesn't appear: (20/20)
+- [x] the game can be restarted without reloading the page: (15/15);
+- [x] game duration is displayed, stop-watch will start after first click on field (not on clues) and related message is displayed at the end of the game: (10/10)
+- [x] sound accompaniment (on/off) for every events (see Advanced block): (15/15);
+- [ ] implemented saving the state of the latest game and "Continue last game" button: (0/15);
+
+- [+/-] Hacker scope (50/80)
+- [ ] option to choose different themes for the game board (dark/light themes): (0/15);
+- [x] ability to change the size (5x5, 10x10, 15x15) is implemented and there are least 5 templates for each level: (20/20);
+- [ ] implemented saving the latest 5 win results with sorting: (0/15);
+- [x] "random game" button is implemented. When player clicks on button - the random template appears (both template and level must be chosen randomly by algorithm): (15/15);
+- [x] "Solution" button is implemented. When player clicks on button - the field is filled in cells with right solution. Such games is not recorded into winning table: (15/15);`);
