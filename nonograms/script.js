@@ -479,6 +479,12 @@ let result = 0;
 let isGamePaused = true;
 let isFirstGame = true;
 
+let startTime;
+let currentTime;
+let seconds;
+let minutes;
+let interval;
+
 const BUTTONS_GAME_SIZE = document.querySelectorAll('.button-level');
 let buttons = document.querySelectorAll('.button-game-select');
 const GAME = document.querySelector('.game');
@@ -522,6 +528,8 @@ function choosePuzzle(event) {
   fillLineClue(puzzle);
   fillColumnClue(puzzle);
   determineResult(puzzle);
+  resetTime();
+  clearInterval(interval);
   isGamePaused = false;
   GO_SOUND.pause();
   GO_SOUND.currentTime = 0;
@@ -860,6 +868,8 @@ function randomGame(event, ...args) {
   fillLineClue(puzzle);
   fillColumnClue(puzzle);
   determineResult(puzzle);
+  resetTime();
+  clearInterval(interval);
   isGamePaused = false;
   GO_SOUND.pause();
   GO_SOUND.currentTime = 0;
@@ -869,12 +879,6 @@ function randomGame(event, ...args) {
   isFirstGame = false;
 }
 randomGame(null, 0, 0);
-
-let startTime;
-let currentTime;
-let seconds;
-let minutes;
-let interval;
 
 function resetTime() {
   startTime = 0;
