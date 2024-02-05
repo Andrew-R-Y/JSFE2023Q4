@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .main-heading {
@@ -114,6 +114,22 @@
 .button-options.active {
   background-color: lightgreen;
   border-color: lightgreen;
+}
+
+.time-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  border-radius: 10px;
+  gap: 10px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: var(--background-secondary);
+}
+
+.time {
+  color: #2e0cc5;
 }
 
 .game {

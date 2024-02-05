@@ -29,13 +29,16 @@
             <div class="button button-game-select"></div>
           </div>
         </div>
+        <div class="time-pane">
+          <span class="time-text">Time:</span><span class="time">00:00</span>
+        </div>
         <div class="game grid-small"></div>
         <div class="menu">
           <h2 class="subheading">Select option</h2>
           <div class="button-section">
             <div class="button button-options" id="reset">Reset game</div>
             <div class="button button-options" id="random">Random game</div>
-            <div class="button button-options" id="solution">Show solution</div>
+            <div class="button button-options" id="solution">Solution</div>
             <div class="button button-options" title="not implemented">
               Save game
             </div>
@@ -52,7 +55,7 @@
         <div class="popup__content">
           <div class="popup__result">
             Great! You have solved the nonogram in
-            <span id="seconds">00:00</span> seconds!
+            <span id="popup__seconds"></span> seconds!
           </div>
           <div class="popup__answer">
             I wish you good luck in further training!
