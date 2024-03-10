@@ -1,20 +1,19 @@
 export interface IResponse {
     status: string;
-    sources: IData[];
+    totalResults: number;
+    articles: IData[];
 }
 
 export interface IData {
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
-    publishedAt: string;
-    author: string;
     source: {
         id: string | null;
         name: string;
     };
+    author: string | null;
     title: string;
+    description: string;
+    url: string;
     urlToImage?: string;
+    publishedAt: string;
+    content: string;
 }
