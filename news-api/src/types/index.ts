@@ -4,11 +4,13 @@ export interface IResponse {
     articles: IData[];
 }
 
+export interface ISource {
+    id: string;
+    name: string;
+}
+
 export interface IData {
-    source: {
-        id: string | null;
-        name: string;
-    };
+    source: ISource;
     author: string | null;
     title: string;
     description: string;
