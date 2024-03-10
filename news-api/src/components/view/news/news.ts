@@ -1,6 +1,11 @@
 import { IData } from '../../../types/index';
 import './news.css';
-class News {
+
+interface INews {
+    draw: (data: IData[]) => void;
+}
+
+class News implements INews {
     draw(data: IData[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
@@ -35,4 +40,4 @@ class News {
     }
 }
 
-export default News;
+export { News, INews, IData };

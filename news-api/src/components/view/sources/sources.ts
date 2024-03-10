@@ -1,7 +1,11 @@
 import './sources.css';
 import { ISource } from '../../../types/index';
 
-class Sources {
+interface ISources {
+    draw: (data: ISource[]) => void;
+}
+
+class Sources implements ISources {
     draw(data: ISource[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
@@ -22,4 +26,4 @@ class Sources {
     }
 }
 
-export default Sources;
+export { Sources, ISources, ISource };
