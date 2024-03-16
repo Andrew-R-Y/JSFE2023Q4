@@ -1,0 +1,28 @@
+:root {
+  --main-color: #000000;
+  --color-border-dark: #000000;
+}
+
+body {
+  height: 100vh;
+  max-width: 920px;
+  max-height: 820px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.main {
+  box-sizing: border-box;
+  height: 65%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid var(--color-border-dark);
+}
